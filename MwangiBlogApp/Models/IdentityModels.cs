@@ -18,6 +18,7 @@ namespace MwangiBlogApp.Models
 
         public ApplicationUser()
         {
+            Comments = new HashSet<Comment>();
 
         }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
