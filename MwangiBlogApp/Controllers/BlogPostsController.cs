@@ -49,7 +49,7 @@ namespace MwangiBlogApp.Controllers
         public ActionResult Create([Bind(Include = "Id,Title,Abstract,slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
-            {d
+            {
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
