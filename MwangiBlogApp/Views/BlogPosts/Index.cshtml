@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Abstract)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.slug)
+            @Html.DisplayNameFor(model => model.Slug)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Body)
@@ -47,10 +47,11 @@
             @Html.DisplayFor(modelItem => item.Abstract)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.slug)
+            @Html.DisplayFor(modelItem => item.Slug)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Body)
+            @*@Html.DisplayFor(modelItem => item.Body)*@
+            @Html.Raw(item.Body)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MediaUrl)
@@ -65,9 +66,9 @@
             @Html.DisplayFor(modelItem => item.Updated)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { slug = item.Slug })|
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
