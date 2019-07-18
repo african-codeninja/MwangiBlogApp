@@ -40,7 +40,7 @@ namespace MwangiBlogApp.Controllers
         public ActionResult Create()
         {
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
-            ViewBag.BlogPostId = new SelectList(db.BlogPosts, "Id", "Title");
+            ViewBag.BlogPostId = new SelectList(db.Posts, "Id", "Title");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace MwangiBlogApp.Controllers
             }
 
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
-            ViewBag.BlogPostId = new SelectList(db.BlogPosts, "Id", "Title", comment.BlogPostId);
+            ViewBag.BlogPostId = new SelectList(db.Posts, "Id", "Title", comment.BlogPostId);
             return View(comment);
         }
 
@@ -76,7 +76,7 @@ namespace MwangiBlogApp.Controllers
                 return HttpNotFound();
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
-            ViewBag.BlogPostId = new SelectList(db.BlogPosts, "Id", "Title", comment.BlogPostId);
+            ViewBag.BlogPostId = new SelectList(db.Posts, "Id", "Title", comment.BlogPostId);
             return View(comment);
         }
 
@@ -94,7 +94,7 @@ namespace MwangiBlogApp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
-            ViewBag.BlogPostId = new SelectList(db.BlogPosts, "Id", "Title", comment.BlogPostId);
+            ViewBag.BlogPostId = new SelectList(db.Posts, "Id", "Title", comment.BlogPostId);
             return View(comment);
         }
 
