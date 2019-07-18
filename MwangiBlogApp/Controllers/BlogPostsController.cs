@@ -50,23 +50,37 @@ namespace MwangiBlogApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Abstract,slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaUrl,Published")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
             {
+                /*instance of class StringUtilities which only has a function  that takes the
+                 argument of title from the blogpost instance and passes that value to var Slug
+                 variable("which is not yet set
+                */
                 var Slug = StringUtilities.URLFriendly(blogPost.Title);
 
-                if (String.IsNullOrWhiteSpace(Slug))
+
+                //this line checks if the string is NULL or no value was entered in the input box
+                //and throws a custome error
+                if (string.IsNullOrWhiteSpace(Slug))
                 {
                     ModelState.AddModelError("Title", "Invalid title");
                     return View(blogPost);
                 }
+
+                //I go out to the database and checkes to see if there are any other slugs that looks
+                //identical basically checks for uniqueness in the database
+                //and those a custom error
                 if (db.Posts.Any(p => p.Slug == Slug))
                 {
                     ModelState.AddModelError("Title", "The title must be unique");
                     return View(blogPost);
                 }
 
+
+                //set the value to the variable you declared in 
+                //var Slug = StringUtilities.URLFriendly(blogPost.Title);
                 blogPost.Slug = Slug;
                 blogPost.Created = DateTimeOffset.Now;
                 db.Posts.Add(blogPost);
