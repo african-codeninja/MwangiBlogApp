@@ -15,7 +15,7 @@ namespace MwangiBlogApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Mbutha application description page.";
 
             return View();
         }
