@@ -31,6 +31,7 @@ namespace MwangiBlogApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             BlogPost blogPost = db.Posts.FirstOrDefault(p => p.Slug == Slug);
+
             if (blogPost == null)
             {
                 return HttpNotFound();
