@@ -20,6 +20,7 @@
     <link href="~/Content/base.css" rel="stylesheet" />
     <link href="~/Content/vendor.css" rel="stylesheet" />
     <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/mosblog.css" rel="stylesheet" />
     @*<link rel="stylesheet" href="css/base.css">
         <link rel="stylesheet" href="css/vendor.css">
         <link rel="stylesheet" href="css/main.css">*@
@@ -60,7 +61,7 @@
             @*<a class="logo" href="index.html">
             <img src="~/images/logo.svg" alt="Homepage">
         </a>*@
-            @Html.ActionLink("MosBlog.", "Index", "blogposts")
+            <p class="actionlink">@Html.ActionLink("MosBlog.", "Index", "blogposts")</p>
         </div> <!-- end header__logo -->
 
         <a class="header__search-trigger" href="#0"></a>
