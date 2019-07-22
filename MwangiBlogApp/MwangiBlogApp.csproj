@@ -208,7 +208,11 @@
     <Content Include="images\icons\icon-minus.svg" />
     <Content Include="images\icons\icon-plus.svg" />
     <Content Include="images\icons\icon-search.svg" />
+    <Content Include="images\index.html" />
+    <Content Include="images\logo.png" />
     <Content Include="images\logo.svg" />
+    <Content Include="images\logo2 copy.png" />
+    <Content Include="images\logo2.png" />
     <Content Include="images\sample-image.jpg" />
     <Content Include="images\thumbs\about\about-1000.jpg" />
     <Content Include="images\thumbs\about\about-2000.jpg" />
