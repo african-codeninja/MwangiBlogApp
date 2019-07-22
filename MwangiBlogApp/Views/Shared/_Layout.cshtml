@@ -21,13 +21,18 @@
     <link href="~/Content/vendor.css" rel="stylesheet" />
     <link href="~/Content/main.css" rel="stylesheet" />
     @*<link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">*@
+        <link rel="stylesheet" href="css/vendor.css">
+        <link rel="stylesheet" href="css/main.css">*@
 
     <!-- script
     ================================================== -->
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/plugins.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/modernizr.js"></script>
-    @*<script src="js/modernizr.js"></script>*@
 
     <!-- favicons
     ================================================== -->
@@ -111,7 +116,6 @@
 
     @RenderBody();
     <!--================================================== -->
-  
     <!-- s-footer
     ================================================== -->
     <footer class="s-footer">
@@ -197,14 +201,14 @@
         </div>
 
     </footer> <!-- end s-footer -->
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
     <!-- Java Script
     ================================================== -->
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     <script src="~/Scripts/plugins.js"></script>
     <script src="~/Scripts/main.js"></script>
-    @*<script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>*@
 
 </body>
 
