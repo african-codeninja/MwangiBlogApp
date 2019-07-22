@@ -187,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\base.css" />
+    <Content Include="Content\font_awesome.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\vendor.css" />
     <Content Include="favicon.ico" />
@@ -261,6 +262,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\font_awesome.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
