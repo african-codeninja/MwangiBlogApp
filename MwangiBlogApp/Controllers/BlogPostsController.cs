@@ -15,7 +15,7 @@ namespace MwangiBlogApp.Controllers
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private object slug;
+        private object Slug;
 
         // GET: BlogPosts
         public ActionResult Index()
