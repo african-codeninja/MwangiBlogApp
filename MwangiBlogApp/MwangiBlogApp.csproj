@@ -189,6 +189,7 @@
     <Content Include="Content\base.css" />
     <Content Include="Content\font_awesome.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\mosblog.css" />
     <Content Include="Content\vendor.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -280,6 +281,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr.js" />
+    <Content Include="Scripts\mosblog.js" />
     <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
