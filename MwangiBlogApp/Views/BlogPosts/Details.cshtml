@@ -1,82 +1,170 @@
 ﻿@model MwangiBlogApp.Models.BlogPost
 
-@{
-    ViewBag.Title = "Details";
-}
+
 
 <h2>Details</h2>
 
-<div>
-    <h4>BlogPost</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+@{ if (Model.MediaUrl != null)
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+    {
+        <img class="img-responsive" src="@Model.MediaUrl" alt="" />
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Abstract)
-        </dt>
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.Abstract)
-        </dd>
+<section class="s-content s-content--top-padding s-content--narrow">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
+    <article class="row entry format-standard">
+        <p>
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            }
+            else
+            {
+                @Html.ActionLink("Login", "Login","Account")
+            }
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img src="images/thumbs/single/standard/standard-1000.jpg"
+                         srcset="images/thumbs/single/standard/standard-2000.jpg 2000w,
+                                     images/thumbs/single/standard/standard-1000.jpg 1000w,
+                                     images/thumbs/single/standard/standard-500.jpg 500w"
+                         sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
+            <div class="entry__header col-full">
+                <h1 class="entry__header-title display-1">                  
+                        @Html.DisplayFor(model => model.Title)
+                </h1>
+                <ul class="entry__header-meta">
+                    @*<li class="date">June 15, 2018</li>*@
+                    <li class="byline">
+                        By
+                        <a href="#0">Moses Mwangi</a>
+                    </li>
+                </ul>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
+            <div class="col-full entry__main">
 
-        <dd>
-            @Html.DisplayFor(model => model.Body)
-        </dd>
+                <p class="">
+                    <div>
+                        <h4>BlogPost</h4>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                            </dt>
+                            <dt>
+                                @*@Html.DisplayNameFor(model => model.Abstract)*@
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MediaUrl)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Abstract)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MediaUrl)
-        </dd>
+                            <dt>
+                                @*@Html.DisplayNameFor(model => model.Slug)*@
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Published)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Slug)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Published)
-        </dd>
+                            <dt>
+                                @*@Html.DisplayNameFor(model => model.Body)*@
+                            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
+                            <dd>
+                                @Html.Raw(Model.Body)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
+                            @*<dt>
+                                @Html.DisplayNameFor(model => model.MediaUrl)
+                            </dt>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
+                            @*<dd>
+                                @Html.DisplayFor(model => model.MediaUrl)
+                            </dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
+                            <dt>
+                                @Model.Created.ToString("MMMM d, yyyy")
+                            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                            <dd>
+                                @Model.Updated.ToString()
+                            </dd>
+
+                            @*<dt>
+                                @Html.DisplayNameFor(model => model.Created)
+                            </dt>*@
+
+                            @*<dd>
+                                @Html.DisplayFor(model => model.Created)
+                            </dd>*@
+
+                            @*<dt>
+                                @Html.DisplayNameFor(model => model.Updated)
+                            </dt>*@
+
+                            @*<dd>
+                                @Html.DisplayFor(model => model.Updated)
+                            </dd>*@
+
+                        </dl>
+                    </div>
+
+                </p>
+             </div>
+        </article> <!-- end entry/article -->
+        <div class="comments-wrap">
+
+
+
+
+
+            <div class="row comment-respond">
+
+                <!-- START respond -->
+                <div id="respond" class="col-full">
+
+                    <h3 class="h2">Add Comment <span>Your email address will not be published</span></h3>
+
+                    <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+                        <fieldset>
+
+                            <div class="form-field">
+                                <input name="cName" id="cName" class="full-width" placeholder="Your Name*" value="" type="text">
+                            </div>
+
+                            <div class="form-field">
+                                <input name="cEmail" id="cEmail" class="full-width" placeholder="Your Email*" value="" type="text">
+                            </div>
+
+                            <div class="form-field">
+                                <input name="cWebsite" id="cWebsite" class="full-width" placeholder="Website" value="" type="text">
+                            </div>
+
+                            <div class="message form-field">
+                                <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message*"></textarea>
+                            </div>
+
+                            <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="Add Comment" type="submit">
+
+                        </fieldset>
+                    </form> <!-- end form -->
+
+                </div>
+                <!-- END respond-->
+
+            </div> <!-- end comment-respond -->
+
+        </div> <!-- end comments-wrap -->
+
+</section> <!-- end s-content -->
+<!-- s-extra
+================================================== -->
