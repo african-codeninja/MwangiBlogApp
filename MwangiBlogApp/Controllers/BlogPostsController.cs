@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -12,11 +14,14 @@ using MwangiBlogApp.Models;
 
 namespace MwangiBlogApp.Controllers
 {
+    [Authorize]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private object Slug;
 
+        public object Posts { get; private set; }
+
+        [AllowAnonymous]
         // GET: BlogPosts
         public ActionResult Index()
         {
@@ -24,6 +29,8 @@ namespace MwangiBlogApp.Controllers
         }
 
         // GET: BlogPosts/Details/5
+        [AllowAnonymous]
+
         public ActionResult Details(string Slug)
         {
             if (String.IsNullOrWhiteSpace(Slug))
@@ -51,7 +58,7 @@ namespace MwangiBlogApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaUrl,Published")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaUrl,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -70,16 +77,21 @@ namespace MwangiBlogApp.Controllers
                     return View(blogPost);
                 }
 
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    blogPost.MediaUrl = "/Uploads/" + fileName;
+                }
+
                 //I go out to the database and checkes to see if there are any other slugs that looks
                 //identical basically checks for uniqueness in the database
-                //and those a custom error
+                //and throw out a custom error
                 if (db.Posts.Any(p => p.Slug == Slug))
                 {
                     ModelState.AddModelError("Title", "The title must be unique");
                     return View(blogPost);
                 }
-
-
                 //set the value to the variable you declared in 
                 //var Slug = StringUtilities.URLFriendly(blogPost.Title);
                 blogPost.Slug = Slug;
@@ -116,10 +128,22 @@ namespace MwangiBlogApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blogPost).State = EntityState.Modified;
+                var newSlug = StringUtilities.URLFriendly(blogPost.Title);
+
+               if (db.Posts.Any(p => p.Slug != newSlug))
+                    {
+                    ModelState.AddModelError("Title", "Invalid title");
+                    return View(blogPost);
+                }
+                
+                blogPost.Slug = newSlug;
+                blogPost.Updated = DateTimeOffset.Now;
+                //db.Entry(blogPost).State = DateTimeOffset.Now;
+                db.Posts.Add(blogPost);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("edit");
             }
+
             return View(blogPost);
         }
 
