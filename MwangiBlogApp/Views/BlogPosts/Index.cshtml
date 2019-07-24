@@ -1,5 +1,5 @@
-﻿@model IEnumerable<MwangiBlogApp.Models.BlogPost>
-@using MwangiBlogApp.Models
+﻿
+@model IEnumerable<MwangiBlogApp.Models.BlogPost>
 
 
 
@@ -105,7 +105,7 @@
 
                     <div class="item-entry" data-aos="zoom-in">
                         <div class="item-entry__thumb">
-                            <a href="single-standard.html" class="item-entry__thumb-link">
+                            <a href=@Url.Action("Details", new { slug = item.Slug }) class="item-entry__thumb-link">
                                 <img src="/images/thumbs/post/lamp-400.jpg"
                                      srcset="/images/thumbs/post/lamp-400.jpg 1x, /images/thumbs/post/lamp-800.jpg 2x" alt="">
                             </a>
@@ -113,13 +113,14 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="category.html">@Html.DisplayFor(modelItem => item.Title)</a>
+                                <a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a>
                             </div>
 
-                            <h1 class="item-entry__title"><a href="single-standard.html">@Html.DisplayFor(modelItem => item.Slug)</a></h1>
-
+                            <h1 class="item-entry__title"><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>
+                            <hr />
                             <div class="item-entry__date">
-                                <a href="single-standard.html">@Html.DisplayFor(modelItem => item.Created)</a>
+                                @*@post.Created.ToString("dddd, dd MMMM yyyy")*@
+                                <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created) @DateTime.Now.ToString("dddd, dd MMMM yyyy")</a>
                             </div>
                         </div>
                     </div> <!-- item-entry -->
@@ -130,25 +131,8 @@
         </div> <!-- end entries-wrap -->
     }
 
-    <div class="row pagination-wrap">
-        <div class="col-full">
-            <nav class="pgn" data-aos="fade-up">
-                <ul>
-                    <li><a class="pgn__prev" href="#0">Prev</a></li>
-                    <li><a class="pgn__num" href="#0">1</a></li>
-                    <li><span class="pgn__num current">2</span></li>
-                    <li><a class="pgn__num" href="#0">3</a></li>
-                    <li><a class="pgn__num" href="#0">4</a></li>
-                    <li><a class="pgn__num" href="#0">5</a></li>
-                    <li><span class="pgn__num dots">…</span></li>
-                    <li><a class="pgn__num" href="#0">8</a></li>
-                    <li><a class="pgn__next" href="#0">Next</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    
 
 </section> <!-- end s-content -->
 <!-- s-extra
 ================================================== -->
-
