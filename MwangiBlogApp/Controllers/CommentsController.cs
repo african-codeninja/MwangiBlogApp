@@ -22,20 +22,21 @@ namespace MwangiBlogApp.Controllers
         }
 
         // GET: Comments/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string Slug)
         {
-            if (id == null)
+            if (String.IsNullOrWhiteSpace(Slug))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            BlogPost blogPost = db.Posts.FirstOrDefault(p => p.Slug == Slug);
+
+            if (blogPost == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
-        }
+            return View(blogPost);
 
+        }
         // GET: Comments/Create
         public ActionResult Create()
         {
