@@ -1,214 +1,213 @@
-﻿
+﻿<!doctype html>
 
+    <html>
 
+    <head>
 
-<head>
-
-    <!--- basic page needs
+        <!--- basic page needs
     ================================================== -->
-    <meta charset="utf-8">
-    <title>Wordsmith</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <title>Wordsmith</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <!-- mobile specific metas
+        <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- CSS
+        <!-- CSS
     ================================================== -->
-    <link href="~/Content/base.css" rel="stylesheet" />
-    <link href="~/Content/vendor.css" rel="stylesheet" />
-    <link href="~/Content/main.css" rel="stylesheet" />
-    <link href="~/Content/mosblog.css" rel="stylesheet" />
-    @*<link rel="stylesheet" href="css/base.css">
-        <link rel="stylesheet" href="css/vendor.css">
-        <link rel="stylesheet" href="css/main.css">*@
+        <link href="~/Content/base.css" rel="stylesheet" />
+        <link href="~/Content/vendor.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" />
+        <link href="~/Content/mosblog.css" rel="stylesheet" />
+        <link href="~/Content/PagedList.css" rel="stylesheet" />
 
-    <!-- script
+        <!-- script
     ================================================== -->
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/Scripts/plugins.js"></script>
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
-    <script src="~/Scripts/tinymce/tinymce.js"></script>
-    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
-    <script src="~/Scripts/modernizr.js"></script>
 
-    <!-- favicons
+        <script src="~/Scripts/modernizr.js"></script>
+
+        <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="/imagges/icons/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/imagges/icons/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
 
-</head>
+    </head>
 
-<body id="top">
+    <body id="top">
 
-    <!-- preloader
+        <!-- preloader
     ================================================== -->
-    <div id="preloader">
-        <div id="loader" class="dots-fade">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div id="preloader">
+            <div id="loader" class="dots-fade">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
-    </div>
-    <!-- header
+        <!-- header
     ================================================== -->
-    <header class="s-header header">
+        <header class="s-header header">
 
-        <div class="header__logo">
-            @*<a class="logo" href="index.html">
-                    <img src="~/images/logo.svg" alt="Homepage">
-                </a>*@
-            <p class="actionlink">@Html.ActionLink("MosBlog.", "Index", "blogposts")</p>
-        </div> <!-- end header__logo -->
 
-        <a class="header__search-trigger" href="#0"></a>
-        <div class="header__search">
+            <div class="header__logo">
+                <a class="logo" href="@Html.ActionLink("Mosblog", "Index", "Home")"
+                    @*<img src="images/logo.png" alt="">*@
+                </a>
+            </div> <!-- end header__logo -->
 
-            <form role="search" method="get" class="header__search-form" action="#">
-                <label>
-                    <span class="hide-content">Search for:</span>
-                    <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
-                </label>
-                <input type="submit" class="search-submit" value="Search">
-            </form>
+            <a class="header__search-trigger" href="#0"></a>
+            <div class="header__search">
 
-            <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+                <form role="search" method="get" class="header__search-form" action="#">
+                    <label>
+                        <span class="hide-content">Search for:</span>
+                        <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    </label>
+                    <input type="submit" class="search-submit" value="Search">
+                </form>
 
-        </div>  <!-- end header__search -->
+                <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
 
-        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
-        <nav class="header__nav-wrap">
+            </div>  <!-- end header__search -->
 
-            <h2 class="header__nav-heading h6">Navigate to</h2>
+            <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+            <nav class="header__nav-wrap">
 
-            <ul class="header__nav">
-                <li class="current">@Html.ActionLink("Home", "Index", "blogposts")</li>
-                @*<li class="has-children">
-                        <a href="#0" title="">Categories</a>
-                        <ul class="sub-menu">
-                            <li><a href="category.html">Lifestyle</a></li>
-                            <li><a href="category.html">Health</a></li>
-                            <li><a href="category.html">Family</a></li>
-                            <li><a href="category.html">Management</a></li>
-                            <li><a href="category.html">Travel</a></li>
-                            <li><a href="category.html">Work</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <a href="#0" title="">Blog</a>
-                        <ul class="sub-menu">
-                            <li><a href="single-video.html">Video Post</a></li>
-                            <li><a href="single-audio.html">Audio Post</a></li>
-                            <li><a href="single-standard.html">Standard Post</a></li>
-                        </ul>
-                    </li>*@
-                <li>@Html.ActionLink("About", "about", "Home")</li>
-                <li>@Html.ActionLink("Contacts", "contact", "Home")</li>
-            </ul> <!-- end header__nav -->
+                <h2 class="header__nav-heading h6">Navigate to</h2>
 
-            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+                <ul class="header__nav">
+                    <li class="current">@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li class="has-children">
+                    <a href="#0" title="">Categories</a>
+                    <ul class="sub-menu">
+                        <li><a href="category.html">Lifestyle</a></li>
+                        <li><a href="category.html">Health</a></li>
+                        <li><a href="category.html">Family</a></li>
+                        <li><a href="category.html">Management</a></li>
+                        <li><a href="category.html">Travel</a></li>
+                        <li><a href="category.html">Work</a></li>
+                    </ul>
+                </li>
+                <li class="has-children">
+                    <a href="#0" title="">Blog</a>
+                    <ul class="sub-menu">
+                        <li><a href="single-video.html">Video Post</a></li>
+                        <li><a href="single-audio.html">Audio Post</a></li>
+                        <li><a href="single-standard.html">Standard Post</a></li>
+                    </ul>
+                </li>*@
+                    <li>@Html.ActionLink("About", "about", "Home")</li>
+                    <li>@Html.ActionLink("Contacts", "contact", "Home")</li>
+                </ul> <!-- end header__nav -->
 
-        </nav> <!-- end header__nav-wrap -->
+                <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
 
-    </header> <!-- s-header -->
+            </nav> <!-- end header__nav-wrap -->
 
-    @RenderBody();
-    <!--================================================== -->
-    <!-- s-footer
+        </header> <!-- s-header -->
+
+        @RenderBody();
+
+        <!-- s-footer
     ================================================== -->
-<footer class="s-footer">
+        <footer class="s-footer">
 
-    <div class="s-footer__main">
-        <div class="row">
+            <div class="s-footer__main">
+                <div class="row">
 
-            <div class="col-six tab-full s-footer__about">
+                    <div class="col-six tab-full s-footer__about">
 
-                <h4>Moses Mwangi</h4>
+                        <h4>Moses Mwangi</h4>
 
-                <p>
-                    Fugiat quas eveniet voluptatem natus. Placeat error temporibus magnam sunt optio aliquam. Ut ut occaecati placeat at.
-                    Fuga fugit ea autem. Dignissimos voluptate repellat occaecati minima dignissimos mollitia consequatur.
-                    Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa error
-                    temporibus magnam est voluptatem.
-                </p>
+                        <p>
+                            Fugiat quas eveniet voluptatem natus. Placeat error temporibus magnam sunt optio aliquam. Ut ut occaecati placeat at.
+                            Fuga fugit ea autem. Dignissimos voluptate repellat occaecati minima dignissimos mollitia consequatur.
+                            Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa error
+                            temporibus magnam est voluptatem.
+                        </p>
 
-            </div> <!-- end s-footer__about -->
+                    </div> <!-- end s-footer__about -->
 
-            <div class="col-six tab-full s-footer__subscribe">
+                    <div class="col-six tab-full s-footer__subscribe">
 
-                <h4>Our Newsletter</h4>
+                        <h4>Our Newsletter</h4>
 
-                <p>Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa consequatur occaecati.</p>
+                        <p>Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa consequatur occaecati.</p>
 
-                <div class="subscribe-form">
-                    <form id="mc-form" class="group" novalidate="true">
+                        <div class="subscribe-form">
+                            <form id="mc-form" class="group" novalidate="true">
 
-                        <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                                <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
 
-                        <input type="submit" name="subscribe" value="Send">
+                                <input type="submit" name="subscribe" value="Send">
 
-                        <label for="mc-email" class="subscribe-message"></label>
+                                <label for="mc-email" class="subscribe-message"></label>
 
-                    </form>
+                            </form>
+                        </div>
+
+                    </div> <!-- end s-footer__subscribe -->
+
                 </div>
+            </div> <!-- end s-footer__main -->
 
-            </div> <!-- end s-footer__subscribe -->
+            <div class="s-footer__bottom">
+                <div class="row">
 
-        </div>
-    </div> <!-- end s-footer__main -->
+                    <div class="col-six">
+                        <ul class="footer-social">
+                            <li>
+                                <a href="#1"><i class="fab fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#2"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#3"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#5"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            <li>
+                                <a href="#6"><i class="fab fa-pinterest"></i></a>
+                            </li>
+                        </ul>
+                    </div>
 
-    <div class="s-footer__bottom">
-        <div class="row">
+                    <div class="col-six">
+                        <div class="s-footer__copyright">
+                            <span>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> Moses Mbutha Mwangi || Designs <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://www.linkedin.com/in/moses-mwangi-consulting-787a7431" target="_blank">Moses Mwangi LinkedIn</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </span>
+                        </div>
+                    </div>
 
-            <div class="col-six">
-                <ul class="footer-social">
-                    <li>
-                        <a href="#1"><i class="fab fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="#2"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#3"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li>
-                        <a href="#5"><i class="fab fa-youtube"></i></a>
-                    </li>
-                    <li>
-                        <a href="#6"><i class="fab fa-pinterest"></i></a>
-                    </li>
-                </ul>
+                </div>
+            </div> <!-- end s-footer__bottom -->
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
             </div>
 
-            <div class="col-six">
-                <div class="s-footer__copyright">
-                    <span>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> Moses Mbutha Mwangi || Designs <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://www.linkedin.com/in/moses-mwangi-consulting-787a7431" target="_blank">Moses Mwangi LinkedIn</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </span>
-                </div>
-            </div>
+        </footer> <!-- end s-footer -->
+        <!-- Java Script
+    ================================================== -->
 
-        </div>
-    </div> <!-- end s-footer__bottom -->
-    @Styles.Render("~/content/css")
+
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Scripts/plugins.js"></script>
+        <script src="~/Scripts/main.js"></script>
+    </body>
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("scripts", required: false)
-    <div class="go-top">
-        <a class="smoothscroll" title="Back to Top" href="#top"></a>
-    </div>
 
-</footer> <!-- end s-footer -->
-    <!-- Java Script
-    ================================================== -->
-    <script src="~/Scripts/plugins.js"></script>
-    <script src="~/Scripts/main.js"></script>
-    
-</body>
+    </html>
 
-</html>
+
+
