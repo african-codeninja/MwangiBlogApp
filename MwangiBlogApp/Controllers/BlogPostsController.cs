@@ -11,10 +11,14 @@ using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using MwangiBlogApp.Helpers;
 using MwangiBlogApp.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MwangiBlogApp.Controllers
 {
-    [Authorize]
+    //[Authorize(Roles = "Admin")]
+
+    //[Authorize(Roles = "Admin, Moderator")]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -23,11 +27,16 @@ namespace MwangiBlogApp.Controllers
 
         [AllowAnonymous]
         // GET: BlogPosts
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Posts.ToList());
-        }
+                int pageSize = 2;
+                int pageNumber = page ?? 1;
 
+            var publishedPosts = db.BlogPosts.OrderBy(b => b.Published).OrderByDescending(b => b.Created).Take(2).ToList();
+
+            return View(publishedPosts.ToPagedList(pageSize, pageNumber));
+         
+        }
         // GET: BlogPosts/Details/5
         [AllowAnonymous]
 
@@ -37,14 +46,13 @@ namespace MwangiBlogApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.Posts.FirstOrDefault(p => p.Slug == Slug);
+            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == Slug);
 
             if (blogPost == null)
             {
                 return HttpNotFound();
             }
             return View(blogPost);
-
         }
 
         // GET: BlogPosts/Create
@@ -87,7 +95,7 @@ namespace MwangiBlogApp.Controllers
                 //I go out to the database and checkes to see if there are any other slugs that looks
                 //identical basically checks for uniqueness in the database
                 //and throw out a custom error
-                if (db.Posts.Any(p => p.Slug == Slug))
+                if (db.BlogPosts.Any(p => p.Slug == Slug))
                 {
                     ModelState.AddModelError("Title", "The title must be unique");
                     return View(blogPost);
@@ -96,7 +104,7 @@ namespace MwangiBlogApp.Controllers
                 //var Slug = StringUtilities.URLFriendly(blogPost.Title);
                 blogPost.Slug = Slug;
                 blogPost.Created = DateTimeOffset.Now;
-                db.Posts.Add(blogPost);
+                db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -111,7 +119,7 @@ namespace MwangiBlogApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.Posts.Find(id);
+            BlogPost blogPost = db.BlogPosts.Find(id);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -130,7 +138,7 @@ namespace MwangiBlogApp.Controllers
             {
                 var newSlug = StringUtilities.URLFriendly(blogPost.Title);
 
-               if (db.Posts.Any(p => p.Slug != newSlug))
+               if (db.BlogPosts.Any(p => p.Slug != newSlug))
                     {
                     ModelState.AddModelError("Title", "Invalid title");
                     return View(blogPost);
@@ -139,7 +147,7 @@ namespace MwangiBlogApp.Controllers
                 blogPost.Slug = newSlug;
                 blogPost.Updated = DateTimeOffset.Now;
                 //db.Entry(blogPost).State = DateTimeOffset.Now;
-                db.Posts.Add(blogPost);
+                db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("edit");
             }
@@ -154,7 +162,7 @@ namespace MwangiBlogApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.Posts.Find(id);
+            BlogPost blogPost = db.BlogPosts.Find(id);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -167,8 +175,8 @@ namespace MwangiBlogApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BlogPost blogPost = db.Posts.Find(id);
-            db.Posts.Remove(blogPost);
+            BlogPost blogPost = db.BlogPosts.Find(id);
+            db.BlogPosts.Remove(blogPost);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
