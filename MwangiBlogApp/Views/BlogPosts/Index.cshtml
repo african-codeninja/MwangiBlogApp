@@ -1,7 +1,7 @@
 ﻿
-@model IEnumerable<MwangiBlogApp.Models.BlogPost>
-
-
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<MwangiBlogApp.Models.BlogPost>
 
 
 <section class="s-featured">
@@ -131,7 +131,7 @@
         </div> <!-- end entries-wrap -->
     }
 
-    
+
 
 </section> <!-- end s-content -->
 <!-- s-extra
