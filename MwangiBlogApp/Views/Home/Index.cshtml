@@ -1,4 +1,7 @@
-﻿@model IEnumerable<MwangiBlogApp.Models.BlogPost>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<MwangiBlogApp.Models.BlogPost>
+
 
 
 <section class="s-featured">
@@ -82,7 +85,6 @@
                         </div> <!-- end entry__content -->
 
                     </div> <!-- end entry -->
-
                 </div> <!-- end featured__slide -->
 
             </div> <!-- end featured -->
@@ -91,7 +93,9 @@
     </div>
 </section> <!-- end s-featured -->
 <!-- s-content-->
+
 <section class="s-content">
+
     @foreach (var item in Model)
     {
 
@@ -117,11 +121,10 @@
                             <hr />
                             <div class="item-entry__date">
                                 @*@post.Created.ToString("dddd, dd MMMM yyyy")*@
-                                <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created) @DateTime.Now.ToString("dddd, dd MMMM yyyy")</a>
+                                <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created) @*@DateTime.Now.ToString("dddd, dd MMMM yyyy")*@</a>
                             </div>
                         </div>
                     </div> <!-- item-entry -->
-
                 </article> <!-- end article -->
 
             </div> <!-- end entries -->
@@ -131,17 +134,9 @@
     <div class="row pagination-wrap">
         <div class="col-full">
             <nav class="pgn" data-aos="fade-up">
-                <ul>
-                    <li><a class="pgn__prev" href="#0">Prev</a></li>
-                    <li><a class="pgn__num" href="#0">1</a></li>
-                    <li><span class="pgn__num current">2</span></li>
-                    <li><a class="pgn__num" href="#0">3</a></li>
-                    <li><a class="pgn__num" href="#0">4</a></li>
-                    <li><a class="pgn__num" href="#0">5</a></li>
-                    <li><span class="pgn__num dots">…</span></li>
-                    <li><a class="pgn__num" href="#0">8</a></li>
-                    <li><a class="pgn__next" href="#0">Next</a></li>
-                </ul>
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
+
             </nav>
         </div>
     </div>
