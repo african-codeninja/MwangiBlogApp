@@ -73,11 +73,9 @@
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Body, new { @class = "col-md-2 control-label" })
-                </div>
-
-                <div class="row">
-                    @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @id = "editor", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Body, htmlAttributes: new { @id = "editor", @class = "form-control" })
+                    </div>
                 </div>
                 <button type="submit" class="submit btn btn--primary btn--large full-width">Send Message</button>
 
@@ -87,9 +85,17 @@
     </div> <!-- s-content__main -->
 
 </section> <!-- end s-content -->
+
 @section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
     <script src="~/Scripts/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
-    <script type="text/javascript">$(function () { tinymce.init({ selector: '#editor' }); });</script>
+    <script type="text/javascript">
+        $(function () {
+            tinymce.init({ selector: '#editor' });
+        });
+    </script>
 
 } 
