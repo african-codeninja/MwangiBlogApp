@@ -18,7 +18,7 @@ namespace MwangiBlogApp.Models
         [Required]
         public string Subject { get; set; }
 
-        [Required][AllowHtml]
+        [Required , AllowHtml]
         public string Body { get; set; }
     }
 }
