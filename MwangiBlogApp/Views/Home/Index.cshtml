@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    @foreach (var item in Model)
+    @*@foreach (var item in Model)
     {
         @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, searchStr = ViewBag.Search }));
         <div class="row">
@@ -34,8 +34,6 @@
                     <div class="item-entry" data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href=@Url.Action("Details" , "BlogPosts", new { slug = item.Slug }) class="item-entry__thumb-link">
-                                <img src="/images/thumbs/post/lamp-400.jpg"
-                                     srcset="/images/thumbs/post/lamp-400.jpg 1x, /images/thumbs/post/lamp-800.jpg 2x" alt="">
                             </a>
                         </div>
 
@@ -47,8 +45,8 @@
                             <h1 class="item-entry__title"><a href=@Url.Action("Details", "BlogPosts", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>
                             <hr />
                             <div class="item-entry__date">
-                                @*@post.Created.ToString("dddd, dd MMMM yyyy")*@
-                                <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created) @*@DateTime.Now.ToString("dddd, dd MMMM yyyy")*@</a>
+                                @*@*@*@*@
+                                @*<a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)*@ @*@DateTime.Now.ToString("dddd, dd MMMM yyyy")*@</a>
                             </div>
                         </div>
                     </div> <!-- item-entry -->
@@ -56,13 +54,13 @@
 
             </div> <!-- end entries -->
         </div> <!-- end entries-wrap -->
-    }
+ 
 
     <div class="row pagination-wrap">
         <div class="col-full">
             <nav class="pgn" data-aos="fade-up">
-                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
+                @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))*@
 
             </nav>
         </div>
