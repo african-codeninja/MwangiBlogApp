@@ -1,5 +1,23 @@
 ﻿.actionlink {
     color:black;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 40px;
+    font-size: 1px;
 }
+.background {
+    background: url() repeat;
+    background-image: url('../images/pngtree.png');
+    border: 1px solid black;
+}
+
+.transbox {
+    margin: 50px;
+    background - color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+}
+
+.transbox p {
+    margin: 5 %;
+    font - weight: bold;
+    color: #000000;
+    }
