@@ -3,55 +3,37 @@
 
 
 <h2>Details</h2>
-
-@{ if (Model.MediaUrl != null)
-
+<p>
+    @if (User.IsInRole("Admin"))
     {
-        <img class="img-responsive" src="@Model.MediaUrl" alt="" />
-    }
-
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    <p></p>
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
 }
+else
+{
+    <p></p>
+    @Html.ActionLink("Login", "Login", "Account")
+}
+    @Html.ActionLink("Back to List", "Index")
+    </p>
+    <section class="s-content s-content">
 
-<section class="s-content s-content--top-padding s-content--narrow">
+        <article class="row entry format-standard">
 
-    <article class="row entry format-standard">
-        <p>
-            @if (User.IsInRole("Admin"))
-            {
-                @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-            }
-            else
-            {
-                @Html.ActionLink("Login", "Login","Account")
-            }
-            @Html.ActionLink("Back to List", "Index")
-        </p>
-        
-            <div class="entry__media col-full">
-                <div class="entry__post-thumb">
-                    <img src="images/thumbs/single/standard/standard-1000.jpg"
-                         srcset="images/thumbs/single/standard/standard-2000.jpg 2000w,
-                                     images/thumbs/single/standard/standard-1000.jpg 1000w,
-                                     images/thumbs/single/standard/standard-500.jpg 500w"
-                         sizes="(max-width: 2000px) 100vw, 2000px" alt="">
-                </div>
-            </div>
 
             <div class="entry__header col-full">
-                <h1 class="entry__header-title display-1">                  
-                        @Html.DisplayFor(model => model.Title)
+                <h1 class="entry__header-title display-1">
+                    @Html.DisplayFor(model => model.Title)
                 </h1>
                 <ul class="entry__header-meta">
-                    @*<li class="date">June 15, 2018</li>*@
                     <li class="byline">
                         By
                         <a href="#0">Moses Mwangi</a>
                     </li>
                 </ul>
             </div>
-
             <div class="col-full entry__main">
-
                 <p class="">
                     <div>
                         <h4>BlogPost</h4>
@@ -62,109 +44,88 @@
                             <dt>
                                 @*@Html.DisplayNameFor(model => model.Abstract)*@
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.Abstract)
                             </dd>
-
                             <dt>
                                 @*@Html.DisplayNameFor(model => model.Slug)*@
                             </dt>
-
                             <dd>
                                 @Html.DisplayFor(model => model.Slug)
                             </dd>
-
                             <dt>
                                 @*@Html.DisplayNameFor(model => model.Body)*@
                             </dt>
-
                             <dd>
                                 @Html.Raw(Model.Body)
                             </dd>
+                            @*<dt>Html.DisplayNameFor(model => model.MediaUrl)</dt>*@
 
-                            @*<dt>
-                                @Html.DisplayNameFor(model => model.MediaUrl)
-                            </dt>*@
+                            @*<dd>@Html.DisplayFor(model => model.MediaUrl)</dd>*@
 
-                            @*<dd>
-                                @Html.DisplayFor(model => model.MediaUrl)
-                            </dd>*@
+                            <dt>@Model.Created.ToString("MMMM d, yyyy")</dt>
 
-                            <dt>
-                                @Model.Created.ToString("MMMM d, yyyy")
-                            </dt>
+                            <dd>@Model.Updated.ToString()</dd>
 
-                            <dd>
-                                @Model.Updated.ToString()
-                            </dd>
+                            @*<dt>@Html.DisplayNameFor(model => model.Created)</dt>*@
 
-                            @*<dt>
-                                @Html.DisplayNameFor(model => model.Created)
-                            </dt>*@
+                            @*<dd>@Html.DisplayFor(model => model.Created)</dd>*@
 
-                            @*<dd>
-                                @Html.DisplayFor(model => model.Created)
-                            </dd>*@
+                            @*<dt>@Html.DisplayNameFor(model => model.Updated)</dt>*@
 
-                            @*<dt>
-                                @Html.DisplayNameFor(model => model.Updated)
-                            </dt>*@
-
-                            @*<dd>
-                                @Html.DisplayFor(model => model.Updated)
-                            </dd>*@
-
+                            @*<dd>@Html.DisplayFor(model => model.Updated)</dd>*@
                         </dl>
+
+                        @{ if (Model.MediaUrl != null)
+
+                            {
+                                <img class="img-responsive" src="@Model.MediaUrl" alt="" />
+                            }
+
+                        }
                     </div>
 
                 </p>
-             </div>
+            </div>
         </article> <!-- end entry/article -->
-        <div class="comments-wrap">
 
+        <div class="row">
+            @if (User.Identity.IsAuthenticated)
+            {
+                using (Html.BeginForm("Create", "Comments", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
 
+                    @Html.Hidden("mySlug", Model.Slug)
+                    @Html.Hidden("BlogPostId", Model.Id)
 
-
-
-            <div class="row comment-respond">
-
-                <!-- START respond -->
-                <div id="respond" class="col-full">
-
-                    <h3 class="h2">Add Comment <span>Your email address will not be published</span></h3>
-
-                    <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
-                        <fieldset>
-
-                            <div class="form-field">
-                                <input name="cName" id="cName" class="full-width" placeholder="Your Name*" value="" type="text">
-                            </div>
-
-                            <div class="form-field">
-                                <input name="cEmail" id="cEmail" class="full-width" placeholder="Your Email*" value="" type="text">
-                            </div>
-
-                            <div class="form-field">
-                                <input name="cWebsite" id="cWebsite" class="full-width" placeholder="Website" value="" type="text">
-                            </div>
-
-                            <div class="message form-field">
-                                <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message*"></textarea>
-                            </div>
-
-                            <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="Add Comment" type="submit">
-
-                        </fieldset>
-                    </form> <!-- end form -->
-
+                    <textarea name="CommentBody" rows="5" cols="100"></textarea>
+                    <br />
+                    <button class="btn btn-primary" type="submit">Add</button>
+                }
+            }
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    Comment Section
                 </div>
-                <!-- END respond-->
+                <div class="row">
+                    @{
+                        var count = Model.Comments.Count();
+                        var word = count == 1 ? "comment" : "Comments";
+                    }
+                    (@count @word...)
+                </div>
+            </div>
+            @foreach (var comment in Model.Comments.OrderByDescending(c => c.Created))
+            {
+                <hr />
+                <div class="row">
+                    <p> @comment.Body</p>
+                    written by @comment.Author.Email on @comment.Created.ToString("MMMM d, yyyy")
+                </div>
+            }
+        </div>
+    </section>
 
-            </div> <!-- end comment-respond -->
 
-        </div> <!-- end comments-wrap -->
-
-</section> <!-- end s-content -->
-<!-- s-extra
-================================================== -->
