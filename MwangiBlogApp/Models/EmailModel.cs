@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MwangiBlogApp.Models
 {
     public class EmailModel
     {
-        [Required, Display(Name ="Name")]
+        [Required, Display(Name = "Name")]
         public String FromName { get; set; }
 
         [Required, Display(Name = "Email"), EmailAddress]
@@ -18,7 +15,7 @@ namespace MwangiBlogApp.Models
         [Required]
         public string Subject { get; set; }
 
-        [Required , AllowHtml]
+        [Required, AllowHtml]
         public string Body { get; set; }
     }
 }
