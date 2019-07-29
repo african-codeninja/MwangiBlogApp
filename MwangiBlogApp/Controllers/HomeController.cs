@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MwangiBlogApp.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
 
     {
