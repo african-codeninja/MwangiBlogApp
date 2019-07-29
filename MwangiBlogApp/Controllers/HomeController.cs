@@ -1,10 +1,6 @@
 ﻿using MwangiBlogApp.Models;
-using PagedList;
-using PagedList.Mvc;
 using System;
 using System.Configuration;
-using System.Data.Entity;
-using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Configuration;
@@ -18,9 +14,6 @@ namespace MwangiBlogApp.Controllers
         private ApplicationDbContext context = new ApplicationDbContext();
         //Allows this controller to access the database 
         private ApplicationDbContext db = new ApplicationDbContext();
-
-
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -50,7 +43,7 @@ namespace MwangiBlogApp.Controllers
 
                     return View(new EmailModel());
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     await Task.FromResult(0);
@@ -60,48 +53,19 @@ namespace MwangiBlogApp.Controllers
         }
 
 
-        //[Authorize(Roles =" Admin, Moderator")]
-        public ActionResult Index(int? page, string searchStr)
+        //[Authorize(Roles = " Admin, Moderator")]
+
+        public ActionResult Index()
         {
-            ViewBag.Search = searchStr;
-
-            var blogList = IndexSearch(searchStr);
-
-            int pageSize = 2;
-            int pageNumber = page ?? 1;
-
-
-            //var publishedPosts = db.BlogPosts.OrderBy(b => b.Published)
-            //                                 .OrderByDescending(b => b.Created)
-            //                                 .Take(5)
-            //                                 .ToList();
-
-            return View(blogList.ToPagedList(pageNumber, pageSize));
-
-            
+            return View();
 
         }
 
-        public IQueryable<BlogPost> IndexSearch(string searchStr)
 
+
+        private object SearchUtility(object p)
         {
-            IQueryable<BlogPost> result = null;
-            if (searchStr != null)
-            {
-                result = db.BlogPosts.AsQueryable();
-                result = result.Where(p => p.Title.Contains(searchStr)
-                || p.Body.Contains(searchStr)
-                || p.Comments.Any(c => c.Body.Contains(searchStr)
-                || c.Author.FirstName.Contains(searchStr)
-                || c.Author.LastName.Contains(searchStr)
-                || c.Author.DisplayName.Contains(searchStr)
-                || c.Author.Email.Contains(searchStr)));
-            }
-            else
-            {
-                result = db.BlogPosts.AsQueryable();
-            }
-            return result.OrderByDescending(p => p.Created);
+            throw new NotImplementedException();
         }
 
         private object Take(int v)
