@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using MwangiBlogApp.Models;
 using Owin;
 using System;
@@ -57,11 +58,11 @@ namespace MwangiBlogApp
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1000832656259-996e217maceohnnofhdq4ihoatl0b1c6.apps.googleusercontent.com",
+                ClientSecret = "ZqEyyRUCJLgzZUHAFQ6utGFo"
+            });
         }
     }
 }
