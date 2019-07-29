@@ -5,33 +5,33 @@
     <head>
 
         <!--- basic page needs
-        ================================================== -->
+    ================================================== -->
         <meta charset="utf-8">
         <title>Mosblog</title>
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="Moses Mbutha Project Blog" content="Personal Blog about the budding Developer Moses Mwangi">
+        <meta name="author" content="Moses Mbutha Mwangi">
 
         <!-- mobile specific metas
-        ================================================== -->
+    ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <!-- CSS
-        ================================================== -->
+    ================================================== -->
         <link href="~/Content/base.css" rel="stylesheet" />
         <link href="~/Content/vendor.css" rel="stylesheet" />
-        <link href="~/Content/main.css" rel="stylesheet" />
-        <link href="~/Content/mosblog.css" rel="stylesheet" />
+        <link href="~/Content/main.css" rel="stylesheet" /
+        <link href="~/Content/mosblog.css" rel="stylesheet" />>
         <link href="~/Content/PagedList.css" rel="stylesheet" />
 
         <!-- script
-        ================================================== -->
+    ================================================== -->
 
         <script src="~/Scripts/modernizr.js"></script>
 
         <!-- favicons
-        ================================================== -->
-        <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    ================================================== -->
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
     </head>
 
@@ -52,8 +52,8 @@
         <header class="s-header header">
             @using PagedList
             @using PagedList.Mvc
-            <div class="actionlink">
-                <p class="logotext"> @Html.ActionLink("Mosblog", "Index", "Home")</p>
+            <div class="header__logo">
+                <p class="actionlink"> @Html.ActionLink("Mosblog", "Index", "BlogPosts")</p>
             </div>
             <!-- end header__logo -->
             <a class="header__search-trigger" href="#0"></a>
@@ -76,7 +76,7 @@
                 <h2 class="header__nav-heading h6">Navigate to</h2>
 
                 <ul class="header__nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "BlogPosts")</li>
                     <li>@Html.ActionLink("About", "about", "Home")</li>
                     <li>@Html.ActionLink("Contacts", "contact", "Home")</li>
                     <li>@Html.ActionLink("Login", "Login", "Account")</li>
@@ -108,15 +108,14 @@
                             <h4>Moses Mwangi</h4>
 
                             <p>
-                                Fugiat quas eveniet voluptatem natus. Placeat error temporibus magnam sunt optio aliquam. Ut ut occaecati placeat at.
-                                Fuga fugit ea autem. Dignissimos voluptate repellat occaecati minima dignissimos mollitia consequatur.
-                                Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa error
-                                temporibus magnam est voluptatem.
+                                <a href="www.linkedin.com/in/moses-mwangi-consulting-787a7431">My LinkedIn Profile</a>
+                                <br />
+                                <a href="https://www.facebook.com/moses.m.mwangi">My Facebook Profile</a>
                             </p>
 
                         </div> <!-- end s-footer__about -->
 
-                        <div class="col-six tab-full s-footer__subscribe">
+                        @*<div class="col-six tab-full s-footer__subscribe">
 
                             <h4>Our Newsletter</h4>
 
@@ -160,7 +159,7 @@
                                     <a href="#6"><i class="fab fa-pinterest"></i></a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>*@
 
                         <div class="col-six">
                             <div class="s-footer__copyright">
