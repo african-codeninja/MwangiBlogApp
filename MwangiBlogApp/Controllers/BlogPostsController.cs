@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MwangiBlogApp.Helpers;
+using MwangiBlogApp.Models;
+using PagedList;
+using System;
 using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
-using MwangiBlogApp.Helpers;
-using MwangiBlogApp.Models;
-using PagedList;
-using PagedList.Mvc;
 
 namespace MwangiBlogApp.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
 
-    //[Authorize(Roles = "Admin, Moderator")]
+    [Authorize(Roles = "Admin, Moderator")]
+
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -29,17 +26,26 @@ namespace MwangiBlogApp.Controllers
         // GET: BlogPosts
         public ActionResult Index(int? page)
         {
-                int pageSize = 2;
-                int pageNumber = page ?? 1;
+            //ViewBag.SearCh = searchStr;
 
-            var publishedPosts = db.BlogPosts.OrderBy(b => b.Published).OrderByDescending(b => b.Created).Take(2).ToList();
+            //var blogList = SearchUtility(searchStr);
 
-            return View(publishedPosts.ToPagedList(pageSize, pageNumber));
-         
+            int pageSize = 3;
+            int pageNumber = page ?? 1;
+
+            //var listPosts = db.BlogPosts.AsQueryable();
+
+            var publishedPosts = db.BlogPosts.OrderBy(b => b.Published)
+                                             .OrderByDescending(b => b.Created)
+                                             .Take(5)
+                                             .ToList();
+
+            return View(publishedPosts.OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize));
+
         }
+
         // GET: BlogPosts/Details/5
         [AllowAnonymous]
-
         public ActionResult Details(string Slug)
         {
             if (String.IsNullOrWhiteSpace(Slug))
@@ -138,12 +144,12 @@ namespace MwangiBlogApp.Controllers
             {
                 var newSlug = StringUtilities.URLFriendly(blogPost.Title);
 
-               if (db.BlogPosts.Any(p => p.Slug != newSlug))
-                    {
+                if (db.BlogPosts.Any(p => p.Slug != newSlug))
+                {
                     ModelState.AddModelError("Title", "Invalid title");
                     return View(blogPost);
                 }
-                
+
                 blogPost.Slug = newSlug;
                 blogPost.Updated = DateTimeOffset.Now;
                 //db.Entry(blogPost).State = DateTimeOffset.Now;
