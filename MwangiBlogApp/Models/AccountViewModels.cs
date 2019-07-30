@@ -66,8 +66,21 @@ namespace MwangiBlogApp.Models
     {
         [Required]
         [EmailAddress]
+        [MaxLength(100), MinLength(5)]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Firs tName")]
+        [MaxLength(40), MinLength(2)]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        [MaxLength(40), MinLength(2)]
+        public string LastName { get; set; }
+
+        [Display(Name = "Display Name")]
+        [MaxLength(40)]
+        public string DisplayName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
