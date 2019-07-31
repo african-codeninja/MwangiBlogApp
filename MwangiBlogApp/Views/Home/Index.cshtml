@@ -4,68 +4,34 @@
                 
 <!-- s-content-->
 
-<section class="s-content">
-    <div class="row">
-        <div class="col-sm-3">
-
+    <section class="s-content">
+        <div class="">
+            <div class="">
+                <img src="images/thumbs/single/standard/standard-1000.jpg"
+                     srcset="/images/thumbs/single/standard/standard-2000.jpg 2000w,
+                                 /images/thumbs/single/standard/standard-1000.jpg 1000w,
+                                 /images/thumbs/single/standard/standard-500.jpg 500w"
+                     sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+            </div>
         </div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">.col-sm-3</div>
-        <div class="col-sm-3">
-            @using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get, htmlAttributes: new { @class = "form" }))
-            {
-                <div class="controls controls-row search-row">
-                    <input id="searchStr" name="searchStr" class="form" type="text" placeholder="Search">
-                    <button id="searchStr" name="searchStr" class="btn" type="submit">
-                        <bu class="icon-search"></bu>
-                    </button>
-                </div>
-            }
-        </div>
-    </div>
-
-    @*@foreach (var item in Model)
-    {
-        @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, searchStr = ViewBag.Search }));
         <div class="row">
-            <div class="entries">
-                <article class="row">
-
-                    <div class="item-entry" data-aos="zoom-in">
-                        <div class="item-entry__thumb">
-                            <a href=@Url.Action("Details" , "BlogPosts", new { slug = item.Slug }) class="item-entry__thumb-link">
-                            </a>
-                        </div>
-
-                        <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href=@Url.Action("Details", "BlogPosts", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a>
-                            </div>
-
-                            <h1 class="item-entry__title"><a href=@Url.Action("Details", "BlogPosts", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>
-                            <hr />
-                            <div class="item-entry__date">
-                                @*@*@*@*@
-                                @*<a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)*@ @*@DateTime.Now.ToString("dddd, dd MMMM yyyy")*@</a>
-                            </div>
-                        </div>
-                    </div> <!-- item-entry -->
-                </article> <!-- end article -->
-
-            </div> <!-- end entries -->
-        </div> <!-- end entries-wrap -->
- 
-
-    <div class="row pagination-wrap">
-        <div class="col-full">
-            <nav class="pgn" data-aos="fade-up">
-                @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))*@
-
-            </nav>
+            @*<div class="col-sm-3">
+                @using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get, htmlAttributes: new { @class = "form" }))
+                {
+                    <div class="controls controls-row search-row">
+                        <input id="searchStr" name="searchStr" class="form" type="text" placeholder="Search">
+                        <button id="searchStr" name="searchStr" class="btn" type="submit">
+                            <bu class="icon-search"></bu>
+                        </button>
+                    </div>
+                }
+            </div>*@
         </div>
-    </div>
+        <div class="row">
+            You have Succesfully logged in
+        </div>
+        
 
-</section> <!-- end s-content -->
+                                </section> <!-- end s-content -->
 <!-- s-extra
 ================================================== -->
