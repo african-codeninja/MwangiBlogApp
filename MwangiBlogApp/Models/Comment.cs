@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace MwangiBlogApp.Models
@@ -9,6 +10,7 @@ namespace MwangiBlogApp.Models
         public int BlogPostId { get; set; }
         public string AuthorId { get; set; }
         [AllowHtml]
+        [Display(Name = "Enter Comment")]
         public string Body { get; set; }
 
         public DateTimeOffset Created { get; set; }
