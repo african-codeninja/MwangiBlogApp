@@ -70,7 +70,7 @@ namespace MwangiBlogApp.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Firs tName")]
+        [Display(Name = "First Name")]
         [MaxLength(40), MinLength(2)]
         public string FirstName { get; set; }
 
