@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -10,8 +11,16 @@ namespace MwangiBlogApp.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        [Required]
+        [Display(Name ="First Name")]
+        [MaxLength(20),MinLength(1)]
         public string FirstName { get; set; }
+        [Required]
+        [Display(Name ="Last Name")]
+        [MaxLength(20),MinLength(1)]
         public string LastName { get; set; }
+        [Display(Name ="Display Name")]
+        [MaxLength(20),MinLength(2)]
         public string DisplayName { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
