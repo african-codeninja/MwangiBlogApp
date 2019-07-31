@@ -22,14 +22,14 @@
                             <div class="">
                                 <hr />
                                 <div class="item-entry__cat">
-                                    <a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a>
+                                    <h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2>
                                 </div>
 
-                                <h1 class="item-entry__title"><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>
+                                @*<h1 class="item-entry__title"><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>*@
 
                                 <div class="item-entry__date">
-                                    @*@post.Created.ToString("dddd, dd MMMM yyyy")*@
-                                    <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created) @DateTime.Now.ToString("dddd, dd MMMM yyyy")</a>
+                                    @item.Created.ToString("dddd, dd MMMM yyyy")
+                                    <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)</a>
                                 </div>
                                 <hr />
                             </div>
