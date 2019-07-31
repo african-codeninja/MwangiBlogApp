@@ -4,46 +4,62 @@
 @model IPagedList<MwangiBlogApp.Models.BlogPost>
 
 <!-- s-content-->
-    <section class="s-content">
-        @foreach (var item in Model)
-        {
+<div class="">
+            <div class="">
+                <img src="images/thumbs/single/standard/standard-1000.jpg"
+                     srcset="/images/thumbs/single/standard/standard-2000.jpg 2000w,
+                                 /images/thumbs/single/standard/standard-1000.jpg 1000w,
+                                 /images/thumbs/single/standard/standard-500.jpg 500w"
+                     sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+            </div>
+        </div>
+<section class="s-content">
+    
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create BlogPost", "Create", "BlogPosts", null, new { @class = "nav-link" })
+    }
+   
+   
+    @foreach (var item in Model)
+    {
 
-            <div class="row entries-wrap wide">
-                <div class="entries-wrap wide">
+        <div class="row entries-wrap wide">
+            <div class="entries-wrap wide">
 
-                    <article class="col-block">
+                <article class="col-block">
 
-                        <div class="item-entry" data-aos="zoom-in">
-                            <div class="item-entry__thumb">
-                                <a href=@Url.Action("Details", new { slug = item.Slug }) class="item-entry__thumb-link">
-                                </a>
+                    <div class="item-entry" data-aos="zoom-in">
+                        <div class="item-entry__thumb">
+                            <a href=@Url.Action("Details", new { slug = item.Slug }) class="item-entry__thumb-link">
+                            </a>
+                        </div>
+
+                        <div class="">
+                            <hr />
+                            <div class="item-entry__cat">
+                                <h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2>
                             </div>
 
-                            <div class="">
-                                <hr />
-                                <div class="item-entry__cat">
-                                    <h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2>
-                                </div>
+                            @*<h1 class="item-entry__title"><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>*@
 
-                                @*<h1 class="item-entry__title"><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>*@
-
-                                <div class="item-entry__date">
-                                    @item.Created.ToString("dddd, dd MMMM yyyy")
-                                    <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)</a>
-                                </div>
-                                <hr />
+                            <div class="item-entry__date">
+                                @item.Created.ToString("dddd, dd MMMM yyyy")
+                                <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)</a>
                             </div>
-                        </div> <!-- item-entry -->
+                            <hr />
+                        </div>
+                    </div> <!-- item-entry -->
 
-                    </article> <!-- end article -->
+                </article> <!-- end article -->
 
-                </div> <!-- end entries -->
-            </div> <!-- end entries-wrap -->
-        }
+            </div> <!-- end entries -->
+        </div> <!-- end entries-wrap -->
+    }
     <div class="row">
         @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }));
     </div>
-    </section> <!-- end s-content -->
+</section> <!-- end s-content -->
 <!-- s-extra
 ================================================== -->
