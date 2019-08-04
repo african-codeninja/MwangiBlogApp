@@ -11,7 +11,8 @@ using System.Web.Mvc;
 
 namespace MwangiBlogApp.Controllers
 {
-    //[Authorize]
+    [Authorize]
+    [Authorize(Roles = "Admin, Moderator")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -57,6 +58,7 @@ namespace MwangiBlogApp.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+
             return View();
         }
 
