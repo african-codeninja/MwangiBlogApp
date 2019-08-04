@@ -11,10 +11,10 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace MwangiBlogApp.Controllers
-{
-    [RequireHttps]
 
-    [Authorize(Roles = "Admin, Moderator")]
+{
+    [Authorize]
+    //[Authorize(Roles = "Admin, Moderator")]
 
     public class BlogPostsController : Controller
     {
@@ -166,11 +166,11 @@ namespace MwangiBlogApp.Controllers
             {
                 var newSlug = StringUtilities.URLFriendly(blogPost.Title);
 
-                if (db.BlogPosts.Any(p => p.Slug != newSlug))
-                {
-                    ModelState.AddModelError("Title", "Invalid title");
-                    return View(blogPost);
-                }
+                //if (db.BlogPosts.Any(p => p.Slug == newSlug))
+                //{
+                //    ModelState.AddModelError("Title", "Invalid title");
+                //    return View(blogPost);
+                //}
 
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
@@ -181,10 +181,10 @@ namespace MwangiBlogApp.Controllers
 
                 blogPost.Slug = newSlug;
                 blogPost.Updated = DateTimeOffset.Now;
-                //db.Entry(blogPost).State = DateTimeOffset.Now;
+                //db.Entry(blogPost).State = DataSetDateTime.Local;
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
-                return RedirectToAction("edit");
+                return RedirectToAction("Index");
             }
 
             return View(blogPost);
