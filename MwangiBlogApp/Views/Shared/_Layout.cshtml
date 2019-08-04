@@ -79,7 +79,7 @@
                     <li>@Html.ActionLink("Home", "Index", "BlogPosts")</li>
                     <li>@Html.ActionLink("About", "about", "Home")</li>
                     <li>@Html.ActionLink("Contacts", "contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Login", "login", "account")</li>
                 </ul> <!-- end header__nav -->
 
 
@@ -88,11 +88,7 @@
         </header> <!-- s-header -->
         <!-- s-Below Header
     ================================================== -->
-        @*<figure>
-            <img src="~/images/pngtree.png" alt="My Blog" />
-            <figcaption>My Blog</figcaption>
-        </figure>*@
-    <
+       
             @RenderBody();
 
             <!-- s-footer
@@ -110,38 +106,15 @@
                             <p>
                                 <a href="https://www.linkedin.com/in/moses-mwangi-consulting-787a7431">My LinkedIn Profile</a>
                                 <br />
-                                @*<a href="https://www.facebook.com/moses.m.mwangi">My Facebook Profile</a>*@
                             </p>
 
-                        </div> <!-- end s-footer__about -->
-
-                        @*<div class="col-six tab-full s-footer__subscribe">
-
-                            <h4>Our Newsletter</h4>
-
-                            <p>Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa consequatur occaecati.</p>
-
-                            <div class="subscribe-form">
-                                <form id="mc-form" class="group" novalidate="true">
-
-                                    <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
-
-                                    <input type="submit" name="subscribe" value="Send">
-
-                                    <label for="mc-email" class="subscribe-message"></label>
-
-                                </form>
-                            </div>
-
-                        </div> <!-- end s-footer__subscribe -->
-
-                    </div>
+                        </div> 
                 </div> <!-- end s-footer__main -->
 
                 <div class="s-footer__bottom">
                     <div class="row">
 
-                        <div class="col-six">
+                        @*<div class="col-six">
                             <ul class="footer-social">
                                 <li>
                                     <a href="#1"><i class="fab fa-facebook"></i></a>
@@ -164,10 +137,8 @@
                         <div class="col-six">
                             <div class="s-footer__copyright">
                                 <span>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     Copyright &copy;
                                     <script>document.write(new Date().getFullYear());</script> Moses Mbutha Mwangi || Designs <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://www.linkedin.com/in/moses-mwangi-consulting-787a7431" target="_blank">Moses Mwangi LinkedIn</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </span>
                             </div>
                         </div>
