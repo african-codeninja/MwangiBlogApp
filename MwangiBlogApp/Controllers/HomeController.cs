@@ -8,7 +8,9 @@ using System.Web.Mvc;
 
 namespace MwangiBlogApp.Controllers
 {
-    [RequireHttps]
+    [Authorize]
+    //[RequireHttps]
+    //[Authorize(Roles = "Admin, Moderator")]
     public class HomeController : Controller
 
     {
@@ -64,7 +66,7 @@ namespace MwangiBlogApp.Controllers
 
 
 
-        private object SearchUtility(object p)
+        private object SearchUtility(/*object p*/)
         {
             throw new NotImplementedException();
         }
