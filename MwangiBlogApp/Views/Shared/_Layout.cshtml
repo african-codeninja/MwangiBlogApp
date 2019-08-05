@@ -86,29 +86,29 @@
             </nav> <!-- end header__nav-wrap -->
 
         </header> <!-- s-header -->
-        <!-- s-Below Header
+        <!-- s-Below Header-->
+    
+
+        @RenderBody();
+
+        <!-- s-footer
     ================================================== -->
-       
-            @RenderBody();
 
-            <!-- s-footer
-        ================================================== -->
+        <footer class="s-footer">
 
-            <footer class="s-footer">
+            <div class="s-footer__main">
+                <div class="row">
 
-                <div class="s-footer__main">
-                    <div class="row">
+                    <div class="col-six tab-full s-footer__about">
 
-                        <div class="col-six tab-full s-footer__about">
+                        <h4>Moses Mwangi</h4>
 
-                            <h4>Moses Mwangi</h4>
+                        <p>
+                            <a href="https://www.linkedin.com/in/moses-mwangi-consulting-787a7431">My LinkedIn Profile</a>
+                            <br />
+                        </p>
 
-                            <p>
-                                <a href="https://www.linkedin.com/in/moses-mwangi-consulting-787a7431">My LinkedIn Profile</a>
-                                <br />
-                            </p>
-
-                        </div> 
+                    </div>
                 </div> <!-- end s-footer__main -->
 
                 <div class="s-footer__bottom">
@@ -149,15 +149,15 @@
                 <div class="go-top">
                     <a class="smoothscroll" title="Back to Top" href="#top"></a>
                 </div>
+            </div>
+        </footer> <!-- end s-footer -->
+        <!-- Java Script
+    ================================================== -->
 
-            </footer> <!-- end s-footer -->
-            <!-- Java Script
-        ================================================== -->
 
-
-            <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-            <script src="~/Scripts/plugins.js"></script>
-            <script src="~/Scripts/main.js"></script>
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Scripts/plugins.js"></script>
+        <script src="~/Scripts/main.js"></script>
     </body>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
