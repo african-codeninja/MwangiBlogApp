@@ -240,6 +240,9 @@
     <Content Include="images\avatars\user-03.jpg" />
     <Content Include="images\avatars\user-04.jpg" />
     <Content Include="images\avatars\user-05.jpg" />
+    <Content Include="images\avatars\user-07.jpg" />
+    <Content Include="images\avatars\user-08.jpg" />
+    <Content Include="images\avatars\user-09.jpg" />
     <Content Include="images\favicon-16x16.png" />
     <Content Include="images\favicon-32x32.png" />
     <Content Include="favicon.ico" />
@@ -267,6 +270,9 @@
     <Content Include="images\thumbs\featured\featured-beetle.jpg" />
     <Content Include="images\thumbs\featured\featured-guitarman.jpg" />
     <Content Include="images\thumbs\featured\featured-watch.jpg" />
+    <Content Include="images\thumbs\featured\featured1.jpg" />
+    <Content Include="images\thumbs\featured\featured2.jpg" />
+    <Content Include="images\thumbs\featured\featured3.jpg" />
     <Content Include="images\thumbs\post\avian-400.jpg" />
     <Content Include="images\thumbs\post\avian-800.jpg" />
     <Content Include="images\thumbs\post\beetle-400.jpg" />
