@@ -15,6 +15,106 @@
         </div>
 <section class="s-content">
     <div class="row">
+        <!-- featured
+    ================================================== -->
+        <section class="s-featured">
+            <div class="row">
+                <div class="col-full">
+
+                    <div class="featured-slider featured" data-aos="zoom-in">
+
+                        <div class="featured__slide">
+                            <div class="entry">
+
+                                <div class="entry__background" style="background-image:url('/images/thumbs/featured/featured1.jpg');"></div>
+
+                                <div class="entry__content">
+                                    <span class="entry__category"><a href="#0">Technology the new game changer</a></span>
+
+                                    <h1><a href="#0" title="">Learing Javascript and C# and the Challenges that lay ahead for a new .net developer.</a></h1>
+
+                                    <div class="entry__info">
+                                        <a href="#0" class="entry__profile-pic">
+                                            <img class="avatar" src="/images/avatars/user-08.jpg" alt="">
+                                        </a>
+                                        <ul class="entry__meta">
+                                            <li><a href="#0">Moses Mwangi</a></li>
+                                            <li>June 02, 2019</li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end entry__content -->
+
+                            </div> <!-- end entry -->
+                        </div> <!-- end featured__slide -->
+
+                        <div class="featured__slide">
+
+                            <div class="entry">
+
+                                <div class="entry__background" style="background-image:url('/images/thumbs/featured/featured2.jpg');"></div>
+
+                                <div class="entry__content">
+                                    <span class="entry__category"><a href="#0">Coder Journey</a></span>
+
+                                    <h1><a href="#0" title="">From hours, Days and Weeks. Starting at Coder foundry from a beginer developer to a candidate for hire</a></h1>
+
+                                    <div class="entry__info">
+                                        <a href="#0" class="entry__profile-pic">
+                                            <img class="avatar" src="/images/avatars/user-07.jpg" alt="">
+                                        </a>
+
+                                        <ul class="entry__meta">
+                                            <li><a href="#0">Moses Mbutha Mwangi</a></li>
+                                            <li>June 13, 2019</li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end entry__content -->
+
+                            </div> <!-- end entry -->
+
+                        </div> <!-- end featured__slide -->
+
+                        <div class="featured__slide">
+
+                            <div class="entry">
+
+                                <div class="entry__background" style="background-image:url('/images/thumbs/featured/featured3.jpg');"></div>
+
+                                <div class="entry__content">
+                                    <span class="entry__category"><a href="#0">C#, Javascript, Boostrap, HTML5 And CSS3</a></span>
+
+                                    <h1><a href="#0" title="">Understanding the Foundational languages to succeed in the .Net stack</a></h1>
+
+                                    <div class="entry__info">
+                                        <a href="#0" class="entry__profile-pic">
+                                            <img class="avatar" src="/images/avatars/user-09.jpg" alt="">
+                                        </a>
+
+                                        <ul class="entry__meta">
+                                            <li><a href="#0">Moses Mbutha Mwangi</a></li>
+                                            <li>June 12, 2019</li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end entry__content -->
+
+                            </div> <!-- end entry -->
+
+                        </div> <!-- end featured__slide -->
+
+                    </div> <!-- end featured -->
+
+                </div> <!-- end col-full -->
+        </section>
+    </div>
+   </section>
+ <!-- end s-featured -->
+        <!-- s-featured
+    ================================================== -->
+    
+
+<section class="s-content" >
+
+    <div class="row">
         @if (User.IsInRole("Admin"))
         {
             @Html.ActionLink("CREATE POST", "Create", "BlogPosts", null, new { @class = "nav-link" })
@@ -24,10 +124,10 @@
     @foreach (var item in Model)
     {
 
-        <div class="row entries-wrap wide">
-            <div class="entries-wrap wide">
+        <div class="row">
+            <div class="row">
 
-                <article class="col-block">
+                <article class="row">
 
                     <div class="item-entry" data-aos="zoom-in">
                         <div class="item-entry__thumb">
@@ -46,9 +146,9 @@
                         <div class="item-entry__date">
                             @item.Created.ToString("dddd, MMMM yyyy")
 
-                            @Html.DisplayFor(modelitem => item.Updated)
+                            
                             <br />
-                            <a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)</a>
+                            @*<a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)</a>*@
 
                         </div>
                             <hr />
@@ -62,7 +162,7 @@
     }
     <div class="row">
         @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }));
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
     </div>
 </section> <!-- end s-content -->
 <!-- s-extra
