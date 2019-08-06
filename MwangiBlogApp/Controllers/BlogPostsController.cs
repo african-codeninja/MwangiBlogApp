@@ -160,17 +160,27 @@ namespace MwangiBlogApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Abstract,slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include ="Id,Title,Abstract,slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
                 var newSlug = StringUtilities.URLFriendly(blogPost.Title);
+                if(newSlug != blogPost.Slug)
+                {
+                    if (string.IsNullOrEmpty(newSlug))
+                    {
+                        ModelState.AddModelError("Title", "Invalid title");
+                        return View(blogPost);
+                    }
 
-                //if (db.BlogPosts.Any(p => p.Slug == newSlug))
-                //{
-                //    ModelState.AddModelError("Title", "Invalid title");
-                //    return View(blogPost);
-                //}
+                    if (db.BlogPosts.Any(p => p.Slug == newSlug))
+                    {
+                        ModelState.AddModelError("Title", "Invalid title");
+                        return View(blogPost);
+                    }
+
+                    blogPost.Slug = newSlug;
+                }
 
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
@@ -179,10 +189,11 @@ namespace MwangiBlogApp.Controllers
                     blogPost.MediaUrl = "/Uploads/" + fileName;
                 }
 
-                blogPost.Slug = newSlug;
                 blogPost.Updated = DateTimeOffset.Now;
-                //db.Entry(blogPost).State = DataSetDateTime.Local;
-                db.BlogPosts.Add(blogPost);
+
+                db.Entry(blogPost).State = EntityState.Modified;
+
+                //db.BlogPosts.Add(blogPost); Code that caused my program not to edit changes
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
