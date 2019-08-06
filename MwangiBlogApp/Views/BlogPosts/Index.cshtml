@@ -104,6 +104,7 @@
                     </div> <!-- end featured -->
 
                 </div> <!-- end col-full -->
+            </div>
         </section>
     </div>
    </section>
@@ -145,7 +146,7 @@
 
                         <div class="item-entry__date">
                             @item.Created.ToString("dddd, MMMM yyyy")
-
+                            @item.Created.TimeOfDay
                             
                             <br />
                             @*<a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)</a>*@
