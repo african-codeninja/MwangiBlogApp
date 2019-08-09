@@ -38,7 +38,7 @@ namespace MwangiBlogApp.Migrations
 
             #endregion
 
-            //I need to creat a few users that will eventually occupy the roles of either Admin or Moderator
+            //I need to create a few users that will eventually occupy the roles of either Admin or Moderator
 
             #region usermanager
 
