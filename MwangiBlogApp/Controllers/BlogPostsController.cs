@@ -28,8 +28,8 @@ namespace MwangiBlogApp.Controllers
 
             var blogList = IndexSearch(searchStr);
 
-            int pageSize = 3;
-            int pageNumber = page ?? 1;
+            int pageSize = 4;
+            int pageNumber = page ?? 2;
 
             //var listPosts = db.BlogPosts.AsQueryable();
 
@@ -236,4 +236,5 @@ namespace MwangiBlogApp.Controllers
             base.Dispose(disposing);
         }
     }
+
 }
