@@ -113,7 +113,7 @@
     ================================================== -->
     
 
-<section class="s-content" >
+<section class="s-content">
 
     <div class="row">
         @if (User.IsInRole("Admin"))
@@ -121,7 +121,7 @@
             @Html.ActionLink("CREATE POST", "Create", "BlogPosts", null, new { @class = "nav-link" })
         }
     </div>
-   
+
     @foreach (var item in Model)
     {
 
@@ -131,31 +131,16 @@
                 <article class="row">
 
                     <div class="item-entry" data-aos="zoom-in">
-                        <div class="item-entry__thumb">
-                            <a href=@Url.Action("Details", new { slug = item.Slug }) class="item-entry__thumb-link">
-                            </a>
-                        </div>
-
-                        <div class="">
-                            <hr />
-                            <div class="item-entry__cat">
-                                <h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2>
-                            </div>
-
-                            @*<h1 class="item-entry__title"><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Slug)</a></h1>*@
-
-                        <div class="item-entry__date">
-                            @item.Created.ToString("dddd, MMMM yyyy")
-                            @item.Created.TimeOfDay
-                            
-                            <br />
-                            @*<a href="single-standard.html">Moses Mwangi @Html.DisplayFor(modelItem => item.Created)</a>*@
-
-                        </div>
-                            <hr />
-                        </div>
-                    </div> <!-- item-entry -->
-
+                        <table class="table1" style="width:100%">
+                            <tr>
+                                <th><h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2></th>
+                            </tr>
+                            <tr>
+                                <td> <h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2></td>
+                            </tr>
+                            <tr>
+                                <td> @item.Created.ToString("dddd, dd MMMM yyyy HH:mm tt")</td>
+                            </tr>
                 </article> <!-- end article -->
 
             </div> <!-- end entries -->
@@ -164,6 +149,16 @@
     <div class="row">
         @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
+    </div>
+    <div class="row add-top-padding"></div>
+    @if (User.IsInRole("Admin"))
+    {
+        using (Html.BeginForm("LogOff", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            <button type="submit">Logout</button>
+        }
+    }
     </div>
 </section> <!-- end s-content -->
 <!-- s-extra
