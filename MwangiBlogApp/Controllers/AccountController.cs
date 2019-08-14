@@ -71,7 +71,8 @@ namespace MwangiBlogApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                //return View(model);
+                return RedirectToAction("Index","BlogPost");
             }
 
             // This doesn't count login failures towards account lockout
@@ -80,7 +81,7 @@ namespace MwangiBlogApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction( "Index", "BlogPosts");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -406,6 +407,7 @@ namespace MwangiBlogApp.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
