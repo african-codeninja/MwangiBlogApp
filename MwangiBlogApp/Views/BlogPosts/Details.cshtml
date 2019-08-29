@@ -3,119 +3,95 @@
 
 
 
-<section class="s-content s-content">
-    <div class="row">
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-            <br />
-            @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
-            <br />
-        }
-        else
-        {
-            @Html.ActionLink("Login", "Login", "Account")
-        }
-        @Html.ActionLink("Back to List", "Index")
+    <section class="s-content s-content">
+        <div class="row">
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                <br />
+                @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+                <br />
+            }
+            else
+            {
+                @Html.ActionLink("BACK TO BLOGS", "Index")
+            }
 
-
-        <h2>Details</h2>
-        <article class="row entry format-standard">
-
-
-            <div class="entry__header col-full">
-                <h1 class="entry__header-title display-1">
-                    @Html.DisplayFor(model => model.Title)
-                </h1>
-                <ul class="entry__header-meta">
-                    <li class="byline">
-                        By
-                        <a href="#0">Moses Mwangi</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-full entry__main">
-                <p class="">
+            <article class="row entry format-standard">
+                <div class="entry__header col-full">
+                    <h1 class="entry__header-title display-1">
+                        @Html.DisplayFor(model => model.Title)
+                    </h1>
+                    <ul class="entry__header-meta">
+                        <li class="byline">By  Moses Mwangi  </li>
+                    </ul>
+                </div>
+                <div class="col-full entry__main">
                     <div>
-                        <h4>BlogPost</h4>
                         <hr />
                         <dl class="dl-horizontal">
-                            <dt>
-                            </dt>
-                            <dt>
-                            </dt>
                             <dd>
                                 @Html.DisplayFor(model => model.Abstract)
-                            </dd>
-
-                            </dt>
-                            <dd>
-                                @Html.DisplayFor(model => model.Slug)
                             </dd>
 
                             <dd>
                                 @Html.Raw(Model.Body)
                             </dd>
-
                             <dt>@Model.Created.ToString("MMMM d, yyyy")</dt>
 
                             <dd>@Model.Updated.ToString()</dd>
-
-
                         </dl>
-
                         @{ if (Model.MediaUrl != null)
-
                             {
                                 <img class="img-responsive" src="@Model.MediaUrl" alt="My Image" width="10%" />
                             }
-
                         }
                     </div>
-
-                </p>
-            </div>
-        </article> <!-- end entry/article -->
-
-        <div class="row">
-            @if (User.Identity.IsAuthenticated)
-            {
-                using (Html.BeginForm("Create", "Comments", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-
-                    @Html.Hidden("mySlug", Model.Slug)
-                    @Html.Hidden("BlogPostId", Model.Id)
-
-                    <textarea name="CommentBody" rows="5" cols="100"></textarea>
-                    <br />
-                    <button class="btn btn-primary" type="submit">Add</button>
-                }
-            }
-            <hr />
+                </div>
+            </article> <!-- end entry/article -->
             <div class="row">
-                <div class="col-md-12">
-                    Comment Section
-                </div>
-                <div class="row">
-                    @{
-                        var count = Model.Comments.Count();
-                        var word = count == 1 ? "comment" : "Comments";
+                @if (User.Identity.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Create", "Comments", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.Hidden("mySlug", Model.Slug)
+                        @Html.Hidden("BlogPostId", Model.Id)
+
+                        <textarea name="CommentBody" rows="5" cols="100"></textarea>
+                        <br />
+                        <button class="btn btn-primary" type="submit">Add</button>
                     }
-                    (@count @word...)
-                </div>
-            </div>
-            @foreach (var comment in Model.Comments.OrderByDescending(c => c.Created))
-            {
+                }
                 <hr />
                 <div class="row">
-                    <p> @comment.Body</p>
-                    written by @comment.Author.Email on @comment.Created.ToString("MMMM d, yyyy")
+                    <div class="col-md-12">
+                        Comment Section
+                    </div>
+                    <div class="row">
+                        @{
+                            var count = Model.Comments.Count();
+                            var word = count == 1 ? "comment" : "Comments";
+                        }
+                        (@count @word...)
+                    </div>
                 </div>
-            }
+                @foreach (var comment in Model.Comments.OrderByDescending(c => c.Created))
+                {
+                    <hr />
+                    <div class="row">
+                        <p> @comment.Body</p>
+                        written by @comment.Author.Email on @comment.Created.ToString("dddd, dd MMMM yyyy HH:mm tt")
+                    </div>
+                }
+            </div>
         </div>
-    </div>
-</section>
+        <div class="row">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </section>
 @section scripts{
 
     @Scripts.Render("~/bundles/jqueryval")
