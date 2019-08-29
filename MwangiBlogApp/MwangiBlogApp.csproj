@@ -255,6 +255,9 @@
     <Content Include="images\icons\icon-minus.svg" />
     <Content Include="images\icons\icon-plus.svg" />
     <Content Include="images\icons\icon-search.svg" />
+    <Content Include="images\IMG_0515.JPG" />
+    <Content Include="images\IMG_0517.JPG" />
+    <Content Include="images\IMG_0533.JPG" />
     <Content Include="images\index.html" />
     <Content Include="images\logo.png" />
     <Content Include="images\logo.svg" />
@@ -273,6 +276,9 @@
     <Content Include="images\thumbs\featured\featured1.jpg" />
     <Content Include="images\thumbs\featured\featured2.jpg" />
     <Content Include="images\thumbs\featured\featured3.jpg" />
+    <Content Include="images\thumbs\IMG_0515.JPG" />
+    <Content Include="images\thumbs\IMG_0517.JPG" />
+    <Content Include="images\thumbs\IMG_0533.JPG" />
     <Content Include="images\thumbs\post\avian-400.jpg" />
     <Content Include="images\thumbs\post\avian-800.jpg" />
     <Content Include="images\thumbs\post\beetle-400.jpg" />
@@ -323,6 +329,51 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="images\site.webmanifest" />
+    <Content Include="Uploads\avian-400.jpg" />
+    <Content Include="Uploads\avian-800.jpg" />
+    <Content Include="Uploads\bald-head-149857_640.png" />
+    <Content Include="Uploads\beetle-150.jpg" />
+    <Content Include="Uploads\beetle-400.jpg" />
+    <Content Include="Uploads\beetle-800.jpg" />
+    <Content Include="Uploads\cookies-150.jpg" />
+    <Content Include="Uploads\featured-beetle.jpg" />
+    <Content Include="Uploads\featured-guitarman.jpg" />
+    <Content Include="Uploads\featured-watch.jpg" />
+    <Content Include="Uploads\flowers-400.jpg" />
+    <Content Include="Uploads\flowers-800.jpg" />
+    <Content Include="Uploads\fuji-400.jpg" />
+    <Content Include="Uploads\fuji-800.jpg" />
+    <Content Include="Uploads\guitarist-400.jpg" />
+    <Content Include="Uploads\guitarist-800.jpg" />
+    <Content Include="Uploads\jump-400.jpg" />
+    <Content Include="Uploads\jump-800.jpg" />
+    <Content Include="Uploads\lamp-400.jpg" />
+    <Content Include="Uploads\lamp-800.jpg" />
+    <Content Include="Uploads\logo.png" />
+    <Content Include="Uploads\main_picture.jpg" />
+    <Content Include="Uploads\main_picture.png" />
+    <Content Include="Uploads\music-400.jpg" />
+    <Content Include="Uploads\music-800.jpg" />
+    <Content Include="Uploads\picture2.jpg" />
+    <Content Include="Uploads\salad-150.jpg" />
+    <Content Include="Uploads\shutterbug-400.jpg" />
+    <Content Include="Uploads\shutterbug-800.jpg" />
+    <Content Include="Uploads\standard-1000.jpg" />
+    <Content Include="Uploads\standard-2000.jpg" />
+    <Content Include="Uploads\standard-500.jpg" />
+    <Content Include="Uploads\sydney-400.jpg" />
+    <Content Include="Uploads\sydney-800.jpg" />
+    <Content Include="Uploads\tulips-400.jpg" />
+    <Content Include="Uploads\tulips-800.jpg" />
+    <Content Include="Uploads\watch-400.jpg" />
+    <Content Include="Uploads\watch-800.jpg" />
+    <Content Include="Uploads\wheel-1000.jpg" />
+    <Content Include="Uploads\wheel-2000.jpg" />
+    <Content Include="Uploads\wheel-400.jpg" />
+    <Content Include="Uploads\wheel-500.jpg" />
+    <Content Include="Uploads\wheel-800.jpg" />
+    <Content Include="Uploads\woodcraft-400.jpg" />
+    <Content Include="Uploads\woodcraft-800.jpg" />
     <Content Include="Web.config" />
     <Content Include="fonts\fa-brands-400.eot" />
     <Content Include="fonts\fa-brands-400.ttf" />
@@ -536,7 +587,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
