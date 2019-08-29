@@ -5,161 +5,126 @@
 
 <!-- s-content-->
 <div class="">
-            <div class="">
-                <img src="images/thumbs/single/standard/standard-1000.jpg"
-                     srcset="/images/thumbs/single/standard/standard-2000.jpg 2000w,
+    <div class="">
+        <img src="images/thumbs/single/standard/standard-1000.jpg"
+             srcset="/images/thumbs/single/standard/standard-2000.jpg 2000w,
                                  /images/thumbs/single/standard/standard-1000.jpg 1000w,
                                  /images/thumbs/single/standard/standard-500.jpg 500w"
-                     sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+             sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+    </div>
+</div>
+<!-- featured
+================================================== -->
+<style>
+    .abstract1{
+        color: whitesmoke; 
+        font-size: 40px;
+    }
+
+    .abstract2{
+        color: whitesmoke; 
+        font-size: 20px;
+    }
+</style>
+
+<section class="s-featured">
+    <div class="row">
+        <div class="col-full">
+
+            <div class="featured-slider featured" data-aos="zoom-in">
+
+
+                @foreach (var item in Model)
+                {
+                    if (item.MediaUrl != null)
+                    {
+                        <div class="featured__slide">
+                            <div class="entry">
+                                <div class="entry__background" style="background-image:url('@Url.Content(item.MediaUrl)');"></div>
+                                <div class="entry__content">
+                                    <span class="entry__category"><a href="#0"></a></span>
+                                    <h1><a href="@Url.Action("Details", "BlogPosts", new { Slug = item.Slug })" title="">@Html.DisplayFor(modelItem => item.Title)</a></h1>
+                                    <div class="abstract1">
+                                        @Html.DisplayFor(modelItem => item.Abstract)
+                                    </div>
+                                    <div>
+                                        <ul class="abstract2">
+                                            <li>
+                                                <td>@item.Created.ToString("dddd, dd MMMM")</td><br />
+                                                <td>@item.Created.ToString("yyyy HH:mm tt")</td>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> <!-- end entry__content -->
+                        </div> <!-- end entry -->
+                    }
+                }
+
             </div>
         </div>
-<section class="s-content">
-    <div class="row">
-        <!-- featured
-    ================================================== -->
-        <section class="s-featured">
-            <div class="row">
-                <div class="col-full">
-
-                    <div class="featured-slider featured" data-aos="zoom-in">
-
-                        <div class="featured__slide">
-                            <div class="entry">
-
-                                <div class="entry__background" style="background-image:url('/images/thumbs/featured/featured1.jpg');"></div>
-
-                                <div class="entry__content">
-                                    <span class="entry__category"><a href="#0">Technology the new game changer</a></span>
-
-                                    <h1><a href="#0" title="">Learing Javascript and C# and the Challenges that lay ahead for a new .net developer.</a></h1>
-
-                                    <div class="entry__info">
-                                        <a href="#0" class="entry__profile-pic">
-                                            <img class="avatar" src="/images/avatars/user-08.jpg" alt="">
-                                        </a>
-                                        <ul class="entry__meta">
-                                            <li><a href="#0">Moses Mwangi</a></li>
-                                            <li>June 02, 2019</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end entry__content -->
-
-                            </div> <!-- end entry -->
-                        </div> <!-- end featured__slide -->
-
-                        <div class="featured__slide">
-
-                            <div class="entry">
-
-                                <div class="entry__background" style="background-image:url('/images/thumbs/featured/featured2.jpg');"></div>
-
-                                <div class="entry__content">
-                                    <span class="entry__category"><a href="#0">Coder Journey</a></span>
-
-                                    <h1><a href="#0" title="">From hours, Days and Weeks. Starting at Coder foundry from a beginer developer to a candidate for hire</a></h1>
-
-                                    <div class="entry__info">
-                                        <a href="#0" class="entry__profile-pic">
-                                            <img class="avatar" src="/images/avatars/user-07.jpg" alt="">
-                                        </a>
-
-                                        <ul class="entry__meta">
-                                            <li><a href="#0">Moses Mbutha Mwangi</a></li>
-                                            <li>June 13, 2019</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end entry__content -->
-
-                            </div> <!-- end entry -->
-
-                        </div> <!-- end featured__slide -->
-
-                        <div class="featured__slide">
-
-                            <div class="entry">
-
-                                <div class="entry__background" style="background-image:url('/images/thumbs/featured/featured3.jpg');"></div>
-
-                                <div class="entry__content">
-                                    <span class="entry__category"><a href="#0">C#, Javascript, Boostrap, HTML5 And CSS3</a></span>
-
-                                    <h1><a href="#0" title="">Understanding the Foundational languages to succeed in the .Net stack</a></h1>
-
-                                    <div class="entry__info">
-                                        <a href="#0" class="entry__profile-pic">
-                                            <img class="avatar" src="/images/avatars/user-09.jpg" alt="">
-                                        </a>
-
-                                        <ul class="entry__meta">
-                                            <li><a href="#0">Moses Mbutha Mwangi</a></li>
-                                            <li>June 12, 2019</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end entry__content -->
-
-                            </div> <!-- end entry -->
-
-                        </div> <!-- end featured__slide -->
-
-                    </div> <!-- end featured -->
-
-                </div> <!-- end col-full -->
-            </div>
-        </section>
     </div>
-   </section>
- <!-- end s-featured -->
-        <!-- s-featured
-    ================================================== -->
-    
-
+</section>
+<!-- end s-featured -->
+<!-- s-featured
+================================================== -->
 <section class="s-content">
+    <div class="row entries-wrap wide">
+        <div class="entries">
+            @foreach (var item in Model)
+            {
+                if (item.MediaUrl != null)
+                {
+                    <article class="col-block">
 
-    <div class="row">
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("CREATE POST", "Create", "BlogPosts", null, new { @class = "nav-link" })
-        }
-    </div>
+                        <div class="item-entry" data-aos="zoom-in">
+                            <div class="item-entry__thumb">
+                                <a href="single-standard.html" class="item-entry__thumb-link">
+                                    <img src="@Url.Content(item.MediaUrl)"
+                                         srcset="@Url.Content(item.MediaUrl)" alt="">
+                                </a>
+                            </div>
+                            <div class="item-entry__text">
+                                <th><h3><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h3></th>
+                                <hr />
+                                <div class="item-entry__date">
+                                    <td>@item.Created.ToString("dddd, dd MMMM")</td><br />
+                                    <td>@item.Created.ToString("yyyy HH:mm tt")</td>
+                                </div>
+                            </div>
+                        </div> <!-- item-entry -->
 
-    @foreach (var item in Model)
-    {
+                    </article> <!-- end article -->
+                }
+            }
+        </div>
 
         <div class="row">
-            <div class="row">
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("CREATE POST", "Create", "BlogPosts", null, new { @class = "nav-link" })
+            }
+        </div>
+        <div class="row">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
+        </div>
+        <div class="row">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
 
-                <article class="row">
+        <div class="row add-top-padding">
+            @if (User.IsInRole("Admin"))
+            {
+                using (Html.BeginForm("LogOff", "Account"))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit">Logout</button>
+                }
+            }
+        </div>
 
-                    <div class="item-entry" data-aos="zoom-in">
-                        <table class="table1" style="width:100%">
-                            <tr>
-                                <th><h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2></th>
-                            </tr>
-                            <tr>
-                                <td> <h2><a href=@Url.Action("Details", new { slug = item.Slug })>@Html.DisplayFor(modelItem => item.Title)</a></h2></td>
-                            </tr>
-                            <tr>
-                                <td> @item.Created.ToString("dddd, dd MMMM yyyy HH:mm tt")</td>
-                            </tr>
-                </article> <!-- end article -->
-
-            </div> <!-- end entries -->
-        </div> <!-- end entries-wrap -->
-    }
-    <div class="row">
-        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))
     </div>
-    <div class="row add-top-padding"></div>
-    @if (User.IsInRole("Admin"))
-    {
-        using (Html.BeginForm("LogOff", "Account"))
-        {
-            @Html.AntiForgeryToken()
-            <button type="submit">Logout</button>
-        }
-    }
-    </div>
+
 </section> <!-- end s-content -->
 <!-- s-extra
 ================================================== -->
