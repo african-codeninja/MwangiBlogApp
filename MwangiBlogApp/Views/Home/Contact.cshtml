@@ -2,15 +2,8 @@
 
 <!-- s-content
     ================================================== -->
-<section class="s-content s-content--top-padding s-content--narrow">
-
-
+<section class="s-content s-content s-content--narrow">
     <div class="row">
-
-
-
-
-
         <div class="row">
             <div class="col-six tab-full">
                 <h4>Where to Find Me</h4>
@@ -21,69 +14,43 @@
                     <abbr title="My personal Telephone number">P:</abbr>
                     919.491.1432
                 </address>
-
             </div>
-
             <div class="col-six tab-full">
                 <h4>Contact Info</h4>
-
                 <p>
                     <address>
                         <strong>Support:</strong>   <a href="mosesmwangi1979@gmail.com">mosesmwangi1979@gmail.com</a><br />
                         <strong>Marketing:</strong> <a href="venzauber@gmail.com">venzauber@gmail.com</a>
                     </address>
                 </p>
-
             </div>
         </div>
-
-
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <fieldset>
-
-                <div class="form-group">
-                    @Html.LabelFor(m => m.FromName, new { @class = "col-md-2 control-label" })
-                </div>
-
-                <div class="row">
-                    @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+    <hr />
+        <div id="respond" class="col-full">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    @Html.TextBoxFor(m => m.FromName, new { @class = "form-control full-width" ,placeholder="PLease enter your full name Your Name*"})
                     @Html.ValidationMessageFor(m => m.FromName)
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.FromEmail, new { @class = "col-md-2 control-label" })
-                </div>
-
-                <div class="row">
-                    @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control", placeholder = "example@email.com" })
+                    @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control full-width", placeholder = "Please enter your email: example@email.com" })
                     @Html.ValidationMessageFor(m => m.FromEmail)
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Subject, new { @class = "col-md-2 control-label" })
-                </div>
-
-                <div class="row">
-                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "" })
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control full-width", placeholder = "Please type in the subject of your post" })
                     @Html.ValidationMessageFor(m => m.Subject)
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Body, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Body, htmlAttributes: new { @id = "editor", @class = "form-control" })
+                    <span>Type in you comment below</span>
+
+                    @Html.TextBoxFor(m => m.Body, htmlAttributes: new { @id = "editor", @class = "form-control" })
+                    <br />
+                    <div class="form-field">
+                        <button type="submit" class="submit btn btn--primary btn--large full-width">Send Message</button>
                     </div>
-                </div>
-                <button type="submit" class="submit btn btn--primary btn--large full-width">Send Message</button>
-
-            </fieldset>
-        }
-
-    </div> <!-- s-content__main -->
-
+                </fieldset>
+            }
+        </div>
+    </div><!-- s-content__main -->
 </section> <!-- end s-content -->
 
 @section scripts{
