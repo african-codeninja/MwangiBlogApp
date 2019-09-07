@@ -14,7 +14,7 @@ namespace MwangiBlogApp.Models
         [Display(Name = "Title")]
         public string Title { get; set; }
         [Required]
-        [MaxLength(50),MinLength(2)]
+        [MaxLength(200),MinLength(2)]
         [Display(Name = "Shortened Blog Title")]
         public string Abstract { get; set; }
         public string Slug { get; set; }
