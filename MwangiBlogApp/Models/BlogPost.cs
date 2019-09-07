@@ -20,7 +20,7 @@ namespace MwangiBlogApp.Models
         public string Slug { get; set; }
         [AllowHtml]
         [Required]
-        [MaxLength(1000),MinLength(2)]
+        [MaxLength(10000),MinLength(10)]
         public string Body { get; set; }
         public string MediaUrl { get; set; }
         public bool Published { get; set; }
