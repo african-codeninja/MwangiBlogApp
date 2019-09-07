@@ -28,21 +28,11 @@ namespace MwangiBlogApp.Controllers
 
             var blogList = IndexSearch(searchStr);
 
-            int pageSize = 3;
+            int pageSize = 4;
             int pageNumber = page ?? 1;
-
-            //var listPosts = db.BlogPosts.AsQueryable();
-
-            //var publishedPosts = db.BlogPosts.OrderBy(b => b.Published)
-            //                                 .OrderByDescending(b => b.Created)
-            //                                 .Take(5)
-            //                                 .ToList();
-
-            //return View(publishedPosts.OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize));
+          
             return View(blogList.ToPagedList(pageNumber, pageSize));
-
         }
-
 
         public IQueryable<BlogPost> IndexSearch(string searchStr)
         {
@@ -104,7 +94,6 @@ namespace MwangiBlogApp.Controllers
                 */
                 var Slug = StringUtilities.URLFriendly(blogPost.Title);
 
-
                 //this line checks if the string is NULL or no value was entered in the input box
                 //and throws a custome error
                 if (string.IsNullOrWhiteSpace(Slug))
@@ -112,15 +101,14 @@ namespace MwangiBlogApp.Controllers
                     ModelState.AddModelError("Title", "Invalid title");
                     return View(blogPost);
                 }
-
+                             
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
                     var fileName = Path.GetFileName(image.FileName);
                     image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
                     blogPost.MediaUrl = "/Uploads/" + fileName;
                 }
-
-                //I go out to the database and checkes to see if there are any other slugs that looks
+                //I go out to the database and check to see if there are any other slugs that looks
                 //identical basically checks for uniqueness in the database
                 //and throw out a custom error
                 if (db.BlogPosts.Any(p => p.Slug == Slug))
