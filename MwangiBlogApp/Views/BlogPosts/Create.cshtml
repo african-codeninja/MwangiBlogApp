@@ -1,98 +1,56 @@
 ﻿@model MwangiBlogApp.Models.BlogPost
 
-@{
-    ViewBag.Title = "Create";
-}
-
-@*<h2>Create</h2>*@
-<hr />
-<section class="s-content">
-    <div class="row">
-        <div class="container">
+<section class="s-content s-content s-content--narrow">  
             <div class="item-entry">
 
                 <div class="row">
 
-                        @if (User.IsInRole("Admin"))
-                        {
-                            @Html.ActionLink("CREATE BLOG", "Create", "BlogPosts", null, new { @class = "nav-link" })
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Login", "Login", "Account")
-                        }
-
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("CREATE BLOG", "Create", "BlogPosts", null, new { @class = "nav-link" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Login", "Login", "Account")
+                    }
+                    <div id="respond" class="col-full">
                         @using (Html.BeginForm("Create", "BlogPosts", FormMethod.Post, new { enctype = "Multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
+                            <h4>ENTER YOUR BLOG POST ENTRY BELOW</h4>
 
-                            <div class="form-horizontal">
-                                <h4>BELOW YOU CAN ENTER YOUR BLOG POST ENTRY</h4>
-                                <hr />
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-1-6">
-                                            TITLE
-                                        </div>
-                                        <div class="row" id="inputBox">
-                                            @Html.TextBoxFor(model => model.Title, new { htmlAttributes = new {@id = "inputBox",@class = "form-control", placeholder = "Enter a title for you blog" } })
-                                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group">
-                                       
-                                        <div class="col-1-6">
-                                            YOUR SHORTEND TITLE
-                                        </div>
-                                        <div class="row">
-                                            @Html.TextBoxFor(model => model.Abstract, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Abstract, "", new { @class = "text-danger" })
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                                        </div>
-                                </div>
-                                
-                                <hr />
-                                <div class="row">
-                                    <div class="col-1-6">
-                                        THE BLOG
-                                    </div>
-                                    @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @id = "editor", @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
-                                </div>
-                                </div>
-                                <hr />
-                                <div class="row">
-                                    <div class="form-group">                                       
-                                            <input name="image" type="file" class="form-control" id="fileUpload" />                                      
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class="row">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        
-                                            <div class="checkbox">
-                                                @Html.EditorFor(model => model.Published)
-                                                @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
-                                            </div>                                 
-                                    </div>
-                                </div>
-                                <div class="form-group">                                    
-                                     <input type="submit" value="Publish your post" class="btn btn-default" />
-                                </div>
+                            @Html.TextBoxFor(model => model.Title, new { @class = "form-control full-width", placeholder = "Enter a title for you blog" })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                            @Html.TextBoxFor(model => model.Abstract, new { @class = "form-control full-width", placeholder = "Enter a summarized title for your blog" })
+                            @Html.ValidationMessageFor(model => model.Abstract, "", new { @class = "text-danger" })
+
+                            @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @id = "editor", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+
+                            <div class="message form-field">
+                                <input name="image" type="file" class="form-control" id="fileUpload" />
                             </div>
+
+                            <div class="message form-field">
+                                @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.EditorFor(model => model.Published)
+                                @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="message form-field">
+                                <input type="submit" value="Publish your post" class="btn btn-default" />
+                            </div>
+
                         }
-                        <div>
-                            @Html.ActionLink("Back to List", "Index")
-                        </div>
-                    <!-- item-entry -->
+                    </div>
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div>    
 </section>
 @section scripts{
 
