@@ -28,7 +28,7 @@ namespace MwangiBlogApp.Controllers
 
             var blogList = IndexSearch(searchStr);
 
-            int pageSize = 4;
+            int pageSize = 9;
             int pageNumber = page ?? 1;
           
             return View(blogList.ToPagedList(pageNumber, pageSize));
