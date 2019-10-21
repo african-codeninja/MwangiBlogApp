@@ -36,6 +36,12 @@ namespace MwangiBlogApp.Migrations
                 roleManager.Create(new IdentityRole { Name = "Moderator" });
             }
 
+            if (!context.Roles.Any(r => r.Name == "Contributor"))
+            {
+                roleManager.Create(new IdentityRole { Name = "Contributor" });
+            }
+
+
             #endregion
 
             //I need to create a few users that will eventually occupy the roles of either Admin or Moderator
@@ -66,6 +72,18 @@ namespace MwangiBlogApp.Migrations
                         DisplayName = "Twitch",
                     }, "Abc&123");
                 }
+
+                if (!context.Users.Any(u => u.Email == "zuri@Mailinator.com"))
+                {
+                    userManager.Create(new ApplicationUser
+                    {
+                        UserName = "zuri@Mailinator.com",
+                        Email = "zuri@Mailinator.com",
+                        FirstName = "Zuri",
+                        LastName = "Mbutha",
+                        DisplayName = "Zuri",
+                    }, "Abc&123");
+                }
             }
 
             #endregion
@@ -76,6 +94,8 @@ namespace MwangiBlogApp.Migrations
             userId = userManager.FindByEmail("joeshmoe@Mailinator.com").Id;
             userManager.AddToRole(userId, "Moderator");
 
+            userId = userManager.FindByEmail("zuri@Mailinator.com").Id;
+            userManager.AddToRole(userId, "Contributor");
         }
 
     }
